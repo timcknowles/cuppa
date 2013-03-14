@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @course.title
+%p
+  %b Date:
+  = @course.date
+%p
+  %b Start time:
+  = @course.start_time
+%p
+  %b End time:
+  = @course.end_time
+%p
+  %b Venue:
+  = @course.venue
+%p
+  %b Description:
+  = @course.description
+%p
+  %b Price:
+  = @course.price
+
+= link_to 'Edit', edit_course_path(@course)
+\|
+= link_to 'Back', courses_path
