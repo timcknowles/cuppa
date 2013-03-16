@@ -1,3 +1,4 @@
 class User < ActiveRecord::Base
-  belongs_to :course
+  has_many: registrations
+  has_many: courses, through: :registrations
 end
