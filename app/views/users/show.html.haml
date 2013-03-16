@@ -10,6 +10,17 @@
   %b Mobile:
   = @user.mobile
 
+%h2 Registered Courses
+%ul
+  -@user.courses.each do |course|
+    %li= course.title
+
+%h2 Add a Course
+=form_for Registration.new do |f|
+  =f.hidden_field :user_id, value: @user.id
+  =f.collection_select :course_id, Course.order('title ASC'), :id, :title
+  =f.submit "Add Course Registration"
+    
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path

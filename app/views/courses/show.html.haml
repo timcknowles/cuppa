@@ -23,12 +23,16 @@
   = @course.price
 
 
-%h1 Registered Participants
--@course.users.each do |user|
-  =user.name
+%h2 Registered Participants
+%ul
+  -@course.users.each do |user|
+    %li= user.name
 
-
-%p= link_to "Add a New Particpant", new_user_path(@user)
+%h2 Add a Participant
+=form_for Registration.new do |f|
+  =f.hidden_field :course_id, value: @course.id
+  =f.collection_select :user_id, User.order('name ASC'), :id, :name
+  =f.submit "Add Participant"
 
 = link_to 'Edit', edit_course_path(@course)
 \|
