@@ -6,6 +6,11 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
    
+  -@user.registrations.each do |registration|
+    %p 
+      %b title:
+      = @registration.course.title
+
   .field
     
     =f.label :course_id
