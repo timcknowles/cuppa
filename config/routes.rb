@@ -1,4 +1,7 @@
 Cuppa::Application.routes.draw do
+  resources :registrations
+
+
   resources :courses
 
 
