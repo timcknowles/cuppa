@@ -4,6 +4,8 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
 
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
@@ -13,13 +15,17 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    
     @course = Course.find(params[:id])
-
-    respond_to do |format|
+    
+  
+   respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @course }
+     format.json { render json: @course }
     end
   end
+
+  
 
   # GET /courses/new
   # GET /courses/new.json
