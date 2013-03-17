@@ -29,10 +29,8 @@
       %td= link_to 'Edit', edit_course_path(course)
       %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
            
-      -if course.users.size > 2 
-        %td= link_to "Register", new_user_path(@user)
-      -else
-        %td= link_to "Add me to the waiting list", new_user_path(@user)
+      %td= link_to "Register", new_user_path(@user, course_id: course.id)
+ 
 
 
          
