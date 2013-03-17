@@ -36,8 +36,9 @@ class UsersController < ApplicationController
       if params[:course_id]
         @course = Course.find(params[:course_id])
         @user.registrations.create(course: @course)
-      format.html # new.html.erb
-      format.json { render json: @user }
+      end
+        format.html # new.html.erb
+        format.json { render json: @user }
     end
   end
 
