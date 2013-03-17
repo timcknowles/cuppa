@@ -5,7 +5,7 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
 gem 'haml-rails'
 gem 'bootstrap-sass'
 
@@ -15,13 +15,17 @@ gem 'bootstrap-sass'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+end
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 group :development do
   gem 'sextant'
-end
+  gem 'sqlite3'
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
