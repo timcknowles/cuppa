@@ -9,7 +9,7 @@
     %th Venue
     %th Description
     %th Price
-    %th
+    %th Places
     %th
     %th
 
@@ -22,6 +22,8 @@
       %td= course.venue
       %td= course.description
       %td= course.price
+      %td= course.places_available
+      %td= pluralize course.users.size, 'place'
       %td= link_to 'Show', course
       %td= link_to 'Edit', edit_course_path(course)
       %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
