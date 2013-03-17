@@ -39,6 +39,7 @@ class UsersController < ApplicationController
       end
         format.html # new.html.erb
         format.json { render json: @user }
+      end  
     end
   end
 

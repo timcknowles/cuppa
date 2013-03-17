@@ -11,7 +11,7 @@
     %th Price
     %th Places available
     %th Number Registered
-    %th PLaces Left
+    %th Places Left
 
   - @courses.each do |course|
     %tr
@@ -24,12 +24,16 @@
       %td= course.price
       %td= course.places_available
       %td= pluralize course.users.size, 'place'
-      %td= pluralize (places_available=-course.users.size), 'place'
+      %td= pluralize course.places_remaining, 'place'
       %td= link_to 'Show', course
       %td= link_to 'Edit', edit_course_path(course)
       %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
            
-      %td= link_to "Register", new_user_path(@user, course_id: course.id)
+      -if course.places_remaining > 0
+        %td= link_to "Register", new_user_path(@user, course_id: course.id)
+      -else
+        %td= link_to "Add me to the waiting list", new_user_path(@user, course_id: course.id)
+
  
 
 
