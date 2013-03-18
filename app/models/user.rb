@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :registrations
   accepts_nested_attributes_for :courses
 
+  
 
   attr_accessor :initial_course_id
  
