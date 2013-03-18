@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   has_many :courses, through: :registrations
   accepts_nested_attributes_for :courses
 
-  
+  has_secure_password
+  validates_presence_of :password, :on => :create
 
   attr_accessor :initial_course_id
  
