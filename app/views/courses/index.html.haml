@@ -32,7 +32,7 @@
       -if course.places_remaining > 0
         %td= link_to "Register", new_user_path(@user, course_id: course.id)
       -else
-        %td= link_to "Add me to the waiting list", new_user_path(@user, course_id: course.id)
+        %td= link_to "Add me to the waiting list", new_user_path(@user)
 
  
 

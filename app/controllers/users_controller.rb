@@ -28,20 +28,20 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @course = Course.find(params[:course_id])
+   # @course = Course.find(params[:course_id])
     
     respond_to do |format|
       if @user.save
 
-      if params[:course_id]
-        @course = Course.find(params[:course_id])
-        @user.registrations.create(course: @course)
+     # if params[:course_id]
+     #   @course = Course.find(params[:course_id])
+     #   @user.registrations.create(course: @course)
       end
         format.html # new.html.erb
         format.json { render json: @user }
       end  
     end
-  end
+  
 
   # GET /users/1/edit
   def edit
