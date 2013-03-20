@@ -1,6 +1,10 @@
 class RegistrationsController < ApplicationController
-def create
-    registration = Registration.create(params[:registration])
-    redirect_to course_path(registration.course)
+  def create
+    unless user_logged_in?
+      redirect_to new_user_path(course_id: params[:course_id])
+      return
+    end
+    @registration = current_user.registrations.create(course_id: params[:course_id])
+    redirect_to course_path(@registration.course)
   end
 end

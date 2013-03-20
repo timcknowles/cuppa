@@ -12,15 +12,22 @@
     = yield(:head)
   
 
-  %body{:class => params[:controller]}
-    
-    .content
+  
+  
 
-      = yield
+  %header.navbar.navbar-fixed-top
+    %nav.navbar-inner
+      .container
+        = render 'layouts/navigation' 
 
-      = render 'layouts/messages'
+  
+  %body{:class => params[:controller]}  
 
+  = yield
+
+  = render 'layouts/messages'
+ 
 
       
-    %footer
-      = debug(params) if Rails.env.development?
+  %footer
+    = debug(params) if Rails.env.development?
