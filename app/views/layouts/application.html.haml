@@ -21,9 +21,10 @@
         = render 'layouts/navigation' 
 
   
-  %body{:class => params[:controller]}  
+  %body.body
+    .container{:class => params[:controller]}  
 
-  = yield
+    = yield
 
   = render 'layouts/messages'
  
