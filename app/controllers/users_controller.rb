@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @course = Course.find(params[:course_id])
+    @course = Course.find(params[:course_id]) if params[:course_id]
     
     respond_to do |format|
         format.html # new.html.erb

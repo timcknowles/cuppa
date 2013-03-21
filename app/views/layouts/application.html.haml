@@ -14,21 +14,21 @@
 
   
   
+  .container-fluid
+    %header.navbar.navbar-fixed-top
+      %nav.navbar-inner
+        .container
+          = render 'layouts/navigation' 
 
-  %header.navbar.navbar-fixed-top
-    %nav.navbar-inner
-      .container
-        = render 'layouts/navigation' 
-
-  
-  %body.body
-    .container{:class => params[:controller]}  
-
+    
+   
+  .body
     = yield
 
-  = render 'layouts/messages'
- 
+    
+   
 
-      
-  %footer
-    = debug(params) if Rails.env.development?
+        
+    %footer
+      = render 'layouts/messages'
+      /= debug(params) if Rails.env.development?

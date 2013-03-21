@@ -1,4 +1,6 @@
 Cuppa::Application.routes.draw do
+  root :to => "courses#index"
+  
   resources :registrations
 
 
@@ -11,7 +13,6 @@ Cuppa::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  root :to => "users#new"
   
   
 
