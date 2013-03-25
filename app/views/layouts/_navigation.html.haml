@@ -4,7 +4,9 @@
     %li
       = link_to 'Logout', logout_path(@session)
     %li 
-      = link_to("#{current_user.email}", '#') 
+      = link_to("#{current_user.email}", '#')
+    %li 
+      = link_to 'My Courses', user_path(current_user)  
   - else
     %li
       = link_to 'Login', login_path(@session)
