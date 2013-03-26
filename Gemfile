@@ -10,6 +10,7 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'figaro'
+gem 'pdfkit'
 
 
 # Gems used only for assets and not required
