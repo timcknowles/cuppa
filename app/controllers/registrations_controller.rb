@@ -7,4 +7,8 @@ class RegistrationsController < ApplicationController
     @registration = current_user.registrations.create(course_id: params[:course_id])
     redirect_to course_path(@registration.course)
   end
+
+  def certificate
+    @registration = current_user.registrations.find(params[:id])
+  end
 end
