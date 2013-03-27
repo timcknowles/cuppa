@@ -63,6 +63,6 @@ module Cuppa
       g.template_engine :haml
     end
 
-    config.middleware.use "PDFKit::Middleware", :print_media_type => true
+    config.middleware.use "PDFKit::Middleware", :print_media_type => true, :orientation => 'Landscape'
   end
 end
