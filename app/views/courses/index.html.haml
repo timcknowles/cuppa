@@ -21,7 +21,7 @@
       %td= course.end_time.to_s(:time)
       %td= course.venue
       %td= course.description
-      %td= course.price
+      %td= number_to_currency(course.price, :unit => "&pound;", :separator => ",", :delimiter => "")
       %td= course.places_available
       %td= pluralize course.users.size, 'place'
       %td= pluralize course.places_remaining, 'place'
