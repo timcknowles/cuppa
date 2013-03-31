@@ -24,24 +24,19 @@ class UsersController < ApplicationController
     end
   end
 
+
   # GET /users/new
   # GET /users/new.json
   def new
     @user = User.new
-    @course = Course.find(params[:course_id])
+    @course = Course.find(params[:course_id]) if params[:course_id]
     
     respond_to do |format|
-      if @user.save
-
-      if params[:course_id]
-        @course = Course.find(params[:course_id])
-        @user.registrations.create(course: @course)
-      end
         format.html # new.html.erb
         format.json { render json: @user }
       end  
     end
-  end
+  
 
   # GET /users/1/edit
   def edit
@@ -52,13 +47,20 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @course = Course.find(params[:course_id]) if params[:course_id]
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
+        current_user = @user
+        @user.registrations.create(course: @course) if @course
+        UserMailer.registration_confirmation(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        format.html do
+          render action: "new" 
+        end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
+
+  attr_accessible :name, :email, :mobile, :password, :password_confirmation
+
   has_many :registrations
   has_many :courses, through: :registrations
-  accepts_nested_attributes_for :courses
-
-  has_secure_password
-  validates_presence_of :password, :on => :create
-
-  attr_accessor :initial_course_id
  
-  after_create do
-  self.registrations.create(course_id: initial_course_id) if initial_course_id
-end
+  has_secure_password
+  
+  validates :name, presence: true
+  validates :password, presence: true, on: :create
+
 end

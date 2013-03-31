@@ -11,13 +11,14 @@
   = @user.mobile
 
 %h2 Registered Courses
-%table
+%table.table-striped.table-hover
   %tr
-    %td Course
-    %td Feedback Form Completed?
-    %td Certificate Sent?
+    %th Course
+    %th Feedback Form Completed?
+    %th Certificate Sent?
     %td Paid?
-    %td status
+    %th status
+    %th
   -@user.registrations.each do |registration|
     %tr
       %td= registration.course.title
@@ -25,7 +26,7 @@
       %td= registration.certificate_sent ? "Yes" : "No"
       %td= registration.paid ? "Yes" : "No"
       %td= registration.waiting_list ? "Waiting List" : "Registered"
-      
+      %td= link_to "GIVE ME MY CERTIFICATE!!!!", certificate_registration_path(registration) 
 
 %h2 Add a Course
 =form_for Registration.new do |f|

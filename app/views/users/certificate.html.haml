@@ -1,0 +1,14 @@
+%p
+  %b 
+  %h1= @user.name
+  %p Has attended the
+
+-@user.registrations.each do |registration|
+  
+  %h3= registration.course.title
+
+  %p on the 
+  
+  %h3= registration.course.date
+   
+
