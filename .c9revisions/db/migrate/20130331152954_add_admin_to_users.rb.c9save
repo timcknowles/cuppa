@@ -1,0 +1,3 @@
+{"ts":1364744308489,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"class AddAdminToUsers < ActiveRecord::Migration\n  def change\n  end\nend\n"]],"start1":0,"start2":0,"length1":0,"length2":71}]],"length":71}
+{"contributors":["jez.walker@gmail.com"],"silentsave":false,"ts":1364744541307,"patch":[[{"diffs":[[0," change\n"],[1,"    add_column :users, :admin, default: false, null: false\n"],[0,"  end\nen"]],"start1":53,"start2":53,"length1":16,"length2":75}]],"length":130,"saved":false}
+{"ts":1364744559173,"patch":[[{"diffs":[[0," :admin,"],[1," :boolean,"],[0," default"]],"start1":83,"start2":83,"length1":16,"length2":26}]],"length":140,"saved":false}

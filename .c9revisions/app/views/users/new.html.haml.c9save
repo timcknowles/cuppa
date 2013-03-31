@@ -1,0 +1,1 @@
+{"ts":1364743437998,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"%h1 New user\n\n= form_for @user do |f|\n\n    -if @course\n        %h2 You are registering on #{@course.title}\n        =hidden_field_tag :course_id, @course.id\n\n    = render 'form', f: f\n\n= link_to 'Back', users_path"]],"start1":0,"start2":0,"length1":0,"length2":212}]],"length":212}
