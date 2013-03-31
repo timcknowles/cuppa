@@ -10,6 +10,6 @@ class RegistrationsController < ApplicationController
 
   def certificate
     @registration = current_user.registrations.find(params[:id])
-
+    render :layout => "certificate"
   end
   end
