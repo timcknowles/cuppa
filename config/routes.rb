@@ -14,4 +14,4 @@ Cuppa::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get "user" => "users#index", :as => "user"
-end
+  end
