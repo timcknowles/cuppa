@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @user.accessible = [:admin] if user_logged_in? && current_user.admin?
+    @user.assign_attributes(params[:admin], :as => :admin)
   end
 
   # POST /users

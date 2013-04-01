@@ -12,14 +12,14 @@
 
   .field
     = f.label :Date
-    = f.date_select :start_time
+    = f.date_select :start_time, :order => [:day, :month, :year]
   .field
     = f.label :start_time
-    = f.time_select :start_time, :ignore_date => true
+    = f.time_select :start_time, {:minute_step => 15}, :ignore_date => true
   
   .field
     = f.label :end_time
-    = f.time_select :end_time, :ignore_date => true
+    = f.time_select :end_time, {:minute_step => 15},:ignore_date => true
   .field
     = f.label :venue
     = f.text_field :venue
