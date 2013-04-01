@@ -1,11 +1,11 @@
 
 %p
-%b 
+%h3 This is certify that 
 %h1= @registration.user.name
-%p Has attended the
+%p attended the
 
-%h3= @registration.course.title
+%h1= @registration.course.title
 
-%p on the 
+%p on 
 
-%h3= @registration.course.start_time.strftime("%B %d, %Y")
+%h2= @registration.course.start_time.strftime("%B #{@registration.course.start_time.day.ordinalize} %Y")
