@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+  attr_accessible :title, :description, :start_time, :end_time, :venue, :price, :places_available
   has_many :registrations
   has_many :users, through: :registrations
   

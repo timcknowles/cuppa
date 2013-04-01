@@ -19,7 +19,9 @@
     = f.label :mobile
     = f.text_field :mobile
 
-
+-if user_logged_in? && current_user.admin?
+    = f.label :toggle_to_set_admin_rights
+    = f.check_box :admin
 .actions
     = f.submit 'Save'
 

@@ -23,8 +23,8 @@
       %td= course.places_available
       %td= pluralize course.users.size, 'place'
       %td= pluralize course.places_remaining, 'place'
-      %td= link_to 'Show', course
       -if user_logged_in? && current_user.admin?
+        %td= link_to 'Show', course
         %td= link_to 'Edit', edit_course_path(course)
         %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
            

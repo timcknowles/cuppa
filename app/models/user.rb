@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :email, :mobile, :password, :password_confirmation
+  attr_accessible :name, :email, :mobile, :password, :password_confirmation, :admin
+  attr_accessor :accessible
 
   has_many :registrations
   has_many :courses, through: :registrations
@@ -10,4 +11,18 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :password, presence: true, on: :create
 
-end
+
+
+
+
+
+    
+
+private 
+    def mass_assignment_authorizer
+      super + (accessible || [])
+
+    end
+  end
+
+
