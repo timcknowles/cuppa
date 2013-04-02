@@ -15,4 +15,4 @@
       %td= registration.certificate_sent ? "Yes" : "No"
       %td= registration.paid ? "Yes" : "No"
       %td= registration.waiting_list ? "Waiting List" : "Registered"
-      %td= link_to "Click for certficate", certificate_registration_path(registration) 
+      %td= link_to "Click for certficate", certificate_registration_path(registration, format: :pdf) 
