@@ -1,4 +1,22 @@
 class RegistrationsController < ApplicationController
+  def index
+    @registrations = current_user.registrations.all
+
+  end
+
+  def show
+    @registrations = current_user.registrations.find(params[:id])
+
+    respond_to do |format|
+    
+
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  
+  end
+
+
   def create
     unless user_logged_in?
       redirect_to new_user_path(course_id: params[:course_id])

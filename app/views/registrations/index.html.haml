@@ -1,0 +1,7 @@
+-@registrations.each do |registration|
+  %tr
+    %td= registration.course.title
+    %td= registration.feedback_form_completed ? "Yes" : "No"
+    %td= registration.certificate_sent ? "Yes" : "No"
+    %td= registration.paid ? "Yes" : "No"
+    %td= registration.waiting_list ? "Waiting List" : "Registered"

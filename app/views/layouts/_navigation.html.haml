@@ -6,7 +6,7 @@
     %li 
       = link_to("#{current_user.email}", '#')
     %li 
-      = link_to 'My Courses', user_path(current_user)  
+      = link_to 'My Courses', registrations_path  
     %li 
       = link_to('Edit account', '#')
   - else
@@ -17,4 +17,4 @@
 
   -if user_logged_in? && current_user.admin?
     %li 
-      = link_to 'Users', user_path(@user)
+      = link_to 'Users', users_path
