@@ -1,8 +1,18 @@
--@registrations.each do |registration|
+%h2 My Courses
+%table.table-bordered.table-striped.table-hover
   %tr
-    %td= registration.course.title
-    %td= registration.feedback_form_completed ? "Yes" : "No"
-    %td= registration.certificate_sent ? "Yes" : "No"
-    %td= registration.paid ? "Yes" : "No"
-    %td= registration.waiting_list ? "Waiting List" : "Registered"
-    %td= link_to "GIVE ME MY CERTIFICATE!!!!", certificate_registration_path(registration) 
+    %th Course
+    %th Feedback Form Completed?
+    %th Certificate Sent?
+    %td Paid?
+    %th status
+    %th Certificate PDF
+
+  -@registrations.each do |registration|
+    %tr
+      %td= registration.course.title
+      %td= registration.feedback_form_completed ? "Yes" : "No"
+      %td= registration.certificate_sent ? "Yes" : "No"
+      %td= registration.paid ? "Yes" : "No"
+      %td= registration.waiting_list ? "Waiting List" : "Registered"
+      %td= link_to "Click for certficate", certificate_registration_path(registration) 

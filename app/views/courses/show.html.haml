@@ -37,12 +37,7 @@
       %td= registration.paid ? "Yes" : "No"
       %td= registration.waiting_list ? "Waiting List" : "Registered"
 
-%h2 Add a Participant
-=form_for Registration.new do |f|
-  =f.hidden_field :course_id, value: @course.id
-  =f.label :name
-  =f.collection_select :user_id, User.order('name ASC'), :id, :name
-  =f.submit "Add Participant"
+
 
 
 = link_to 'Edit', edit_course_path(@course)

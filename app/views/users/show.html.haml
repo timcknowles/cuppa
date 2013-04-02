@@ -18,7 +18,7 @@
     %th Certificate Sent?
     %td Paid?
     %th status
-    %th
+    %th Certificate PDF
   -@user.registrations.each do |registration|
     %tr
       %td= registration.course.title
@@ -26,13 +26,9 @@
       %td= registration.certificate_sent ? "Yes" : "No"
       %td= registration.paid ? "Yes" : "No"
       %td= registration.waiting_list ? "Waiting List" : "Registered"
-      %td= link_to "GIVE ME MY CERTIFICATE!!!!", certificate_registration_path(registration) 
+      %td= link_to "Click for certficate", certificate_registration_path(registration) 
 
-%h2 Add a Course
-=form_for Registration.new do |f|
-  =f.hidden_field :user_id, value: @user.id
-  =f.collection_select :course_id, Course.order('title ASC'), :id, :title
-  =f.submit "Add Course Registration"
+
     
 = link_to 'Edit', edit_user_path(@user)
 \|
