@@ -31,13 +31,3 @@ class RegistrationsController < ApplicationController
     render :layout => "certificate"
   end
 end
-
-  def destroy
-    @registrations = current_user.registrations.find(params[:id])
-    @current_user.registrations.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
-  end

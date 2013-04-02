@@ -19,23 +19,23 @@
   %b Price:
   = @course.price
 
+-if user_logged_in? && current_user.admin?
 
-
-%h2 Registered Participants
-%table
-  %tr
-    %th User
-    %th Feedback Form Completed?
-    %th Certificate Sent?
-    %th Paid?
-    %th status
-  -@course.registrations.each do |registration|
+  %h2 Registered Participants
+  %table
     %tr
-      %td= registration.user.name
-      %td= registration.feedback_form_completed ? "Yes" : "No"
-      %td= registration.certificate_sent ? "Yes" : "No"
-      %td= registration.paid ? "Yes" : "No"
-      %td= registration.waiting_list ? "Waiting List" : "Registered"
+      %th User
+      %th Feedback Form Completed?
+      %th Certificate Sent?
+      %th Paid?
+      %th status
+    -@course.registrations.each do |registration|
+      %tr
+        %td= registration.user.name
+        %td= registration.feedback_form_completed ? "Yes" : "No"
+        %td= registration.certificate_sent ? "Yes" : "No"
+        %td= registration.paid ? "Yes" : "No"
+        %td= registration.waiting_list ? "Waiting List" : "Registered"
 
 
 
