@@ -26,18 +26,21 @@ class RegistrationsController < ApplicationController
     redirect_to course_path(@registration.course)
   end
 
+
   def certificate
     @registration = current_user.registrations.find(params[:id])
     render :layout => "certificate"
   end
-end
+
+
   
   def destroy
-    @registration = course.registrations.find(params[:id])
-    @course.registrations.destroy
+    @registration = Registration.find(params[:id])
+    @registration.destroy
 
     respond_to do |format|
       format.html { redirect_to courses_url }
       format.json { head :no_content }
     end
   end
+end
