@@ -37,7 +37,10 @@
         %td= registration.paid ? "Yes" : "No"
         %td= registration.waiting_list ? "Waiting List" : "Registered"
         %td= link_to 'Delete', registration, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        
+        %td= link_to("Toggle On", registration_toggleon_url(registration), :method => :put, :title => "This toggles it on")
+        %td= link_to("Toggle Off", registration_toggleoff_url(registration), :method => :put, :title => "This toggles it off")
+
+            
 
 
 

@@ -32,15 +32,23 @@ class RegistrationsController < ApplicationController
     render :layout => "certificate"
   end
 
-
   
-  def destroy
-    @registration = Registration.find(params[:id])
-    @registration.destroy
 
-    respond_to do |format|
-      format.html { redirect_to courses_url }
-      format.json { head :no_content }
+  def toggle
+   @registration = Registration.find(params[:id])
+   @registration.toggle(:feedback_form_completed)
+  end 
+
+  def destroy
+    if user_logged_in? && current_user.admin?
+      @registration = Registration.find(params[:id])
+      @registration.destroy
+    
+
+      respond_to do |format|
+        format.html { redirect_to courses_url }
+        format.json { head :no_content }
+      end
     end
   end
 end

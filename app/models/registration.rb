@@ -1,6 +1,7 @@
 class Registration < ActiveRecord::Base
 
-  attr_accessible :course, :course_id
+  attr_accessible :course, :course_id, :feedback_form_completed
+  attr_accessible :feedback_form_completed, :as => :admin
 
   belongs_to :course
   belongs_to :user
@@ -12,4 +13,7 @@ class Registration < ActiveRecord::Base
     self.waiting_list = course.full?
     true
   end
-end
+
+
+  
+end 

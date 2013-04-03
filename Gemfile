@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'pdfkit'
 gem 'unicorn'
 gem 'wkhtmltopdf-binary'
+gem 'google_drive'
 
 
 # Gems used only for assets and not required
