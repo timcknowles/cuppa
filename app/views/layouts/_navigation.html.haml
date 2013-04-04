@@ -5,8 +5,8 @@
       = link_to 'Logout', logout_path(@session)
     %li 
       = link_to("#{current_user.email}", '#')
-    %li 
-      = link_to 'My Courses', registrations_path  
+    %li.hint 
+      = link_to 'My Courses', registrations_path, :rel => "tooltip"
     %li 
       = link_to('Edit account', '#')
   - else

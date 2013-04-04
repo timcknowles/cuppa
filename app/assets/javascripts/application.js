@@ -14,8 +14,13 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+$('#hint').tooltip('show')
 
 $(document).ready(function(){       
 $('#modal-from-dom').modal('hide')
     
 }); 
+
+
+
+
