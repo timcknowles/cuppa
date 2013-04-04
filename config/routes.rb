@@ -1,4 +1,10 @@
 Cuppa::Application.routes.draw do
+    namespace :mercury do
+      resources :images
+    end
+
+  mount Mercury::Engine => '/'
+
   get "help/demo"
 
   root :to => "courses#index"
