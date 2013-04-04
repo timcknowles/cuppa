@@ -1,3 +1,11 @@
+ActionController::Base.asset_host = Proc.new { |source, request|
+  if request.env["REQUEST_PATH"].include? ".pdf"
+    "file://#{Rails.root.join('public')}"
+  else
+    "#{request.protocol}#{request.host_with_port}"
+  end
+}
+
 Cuppa::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -21,13 +29,7 @@ Cuppa::Application.configure do
   config.assets.digest = true
 
 
-  ActionController::Base.asset_host = Proc.new { |source, request|
-  if request.env["REQUEST_PATH"].include? ".pdf"
-    "file://#{Rails.root.join('public')}"
-  else
-    "#{request.protocol}#{request.host_with_port}"
-  end
-}
+
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
