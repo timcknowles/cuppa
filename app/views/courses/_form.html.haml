@@ -1,36 +1,26 @@
-= form_for @course do |f|
-  - if @course.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@course.errors.count, "error")} prohibited this course from being saved:"
-      %ul
-        - @course.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-
-  .field
-    = f.label :Date
-    = f.date_select :start_time, :order => [:day, :month, :year]
-  .field
-    = f.label :start_time
-    = f.time_select :start_time, {:minute_step => 15}, :ignore_date => true
+= simple_form_for @course, { :class => 'form-horizontal'} do |f|
   
-  .field
-    = f.label :end_time
-    = f.time_select :end_time, {:minute_step => 15},:ignore_date => true
-  .field
+
+  =f.input :title
+
+  =f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
+
+  =f.input :start_time, :as=> :time, :minute_step => 15
+
+  =f.input :end_time, :as=> :time, :minute_step => 15
+
+  =f.input :venue
+  
+  =f.input :description 
+  .mercury-region{:id => "test","data-mercury" => "full"}
+  =f.input :price
+  
+  =f.input :places_available, label: 'places'
+
+  
+  = f.submit nil, label:'Save', :class => 'btn btn-primary'
+  
+  .field.mercury-region{:id => "test2","data-mercury" => "full"}
     = f.label :venue
     = f.text_field :venue
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :places
-    = f.text_field :places_available
-  .actions
-    = f.submit 'Save'
+

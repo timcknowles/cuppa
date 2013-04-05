@@ -15,6 +15,7 @@ gem 'unicorn'
 gem 'wkhtmltopdf-binary'
 gem 'google_drive'
 gem 'mercury-rails'
+gem 'simple_form'
 
 
 
