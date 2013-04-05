@@ -14,20 +14,20 @@
 
   
   
-  .container-fluid
-    %header.navbar.navbar-static-top
-      %nav.navbar-inner
-        .container
-        = render 'layouts/navigation' 
+    
 
     
    
   .body
-    = yield
-
     
-   
 
+    .container-fluid
+    %header.navbar.navbar-static-top
+      %nav.navbar-inner
+        .container
+        = render 'layouts/navigation' 
+   
+    = yield
         
     %footer
       = render 'layouts/messages'
