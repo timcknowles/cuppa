@@ -10,9 +10,9 @@
   =f.input :end_time, :as=> :time, :minute_step => 15
 
   =f.input :venue
-  
+  .mercury-region{:id => "course_description","data-mercury" => "full"}
   =f.input :description 
-  .mercury-region{:id => "test","data-mercury" => "full"}
+  
   =f.input :price
   
   =f.input :places_available, label: 'places'
@@ -20,7 +20,5 @@
   
   = f.submit nil, label:'Save', :class => 'btn btn-primary'
   
-  .field.mercury-region{:id => "test2","data-mercury" => "full"}
-    = f.label :venue
-    = f.text_field :venue
+
 
