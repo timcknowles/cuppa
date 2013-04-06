@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+
     respond_to do |format|
     
 
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    
     @course = Course.find(params[:course_id]) if params[:course_id]
     
     respond_to do |format|

@@ -1,4 +1,7 @@
 Cuppa::Application.routes.draw do
+  resources :locations
+
+
     namespace :mercury do
       resources :images
     end
@@ -22,6 +25,7 @@ Cuppa::Application.routes.draw do
   resources :users
   resources :sessions
   resources :registrations
+  
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"

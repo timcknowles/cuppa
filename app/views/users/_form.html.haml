@@ -1,29 +1,37 @@
-=render 'layouts/errormessages'
+= simple_form_for @user, { :class => 'form-horizontal'} do |f|
 
-.field
-    = f.label :name
-    = f.text_field :name
-.field
-    = f.label :email
-    = f.text_field :email
+  =f.input :name, label: "first name"
 
-.field
-    = f.label :password
-    = f.password_field :password
 
-.field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+  =f.input :last_name
 
-.field
-    = f.label :mobile
-    = f.text_field :mobile
+  =f.input :email
 
--if user_logged_in? && current_user.admin?
-    = f.label :toggle_to_set_admin_rights
-    = f.check_box :admin 
-.actions
-    = f.submit 'Save'
+  =f.input :password
 
+  =f.input :password_confirmation
+   
+  =f.input :mobile
+
+  =f.association :locations,  label_method: :trust, value_method: :id, include_blank: false
+ 
+
+ 
+
+ 
+
+  -if user_logged_in? && current_user.admin?
+    = f.input :admin, label:'toggle to set admin rights', :as=> :boolean
+
+  = f.submit nil, label:'Save', :class => 'btn btn-primary'
+  
+
+
+
+
+
+  
+
+  
 
 
