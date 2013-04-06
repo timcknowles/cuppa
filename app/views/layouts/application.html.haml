@@ -18,14 +18,19 @@
 
     
    
-  .body
+  %body.body
     
 
-    .container-fluid
-    %header.navbar.navbar-static-top
-      %nav.navbar-inner
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
         .container
-        = render 'layouts/navigation' 
+          .button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+            .icon-bar
+            .icon-bar
+            .icon-bar
+          = link_to "Cuppa", root_path, :class => 'brand'
+          .nav-collapse.collapse
+            = render 'layouts/navigation' 
    
     = yield
         
