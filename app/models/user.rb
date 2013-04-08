@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :last_name, :trust, :hospital, :email, :mobile, :password, :password_confirmation, :admin
+  attr_accessible :name, :last_name, :trust, :hospital, :email, :mobile, :password, :password_confirmation, :admin, :location_id, :location_name
   attr_accessible :admin, :as => :admin
 
   has_many :registrations
@@ -16,7 +16,7 @@ def location_name
 end
 
 def location_name=(trust)
-  self.location = Location.find_by_name(trust) if trust.present?
+  self.location = Location.find_or_create_by_name(trust) if trust.present?
 end
 
 
