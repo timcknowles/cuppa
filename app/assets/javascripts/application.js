@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
@@ -27,3 +28,7 @@ $(document).ready(function() {
             $(this).parent().addClass("active")
     })
 })
+
+jQuery ->
+  $('#location_name').autocomplete
+     source: $('#location_name').data('autocomplete-source')

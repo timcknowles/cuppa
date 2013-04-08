@@ -11,7 +11,13 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :password, presence: true, on: :create
 
+def location_name
+  location.try(:trust)
+end
 
+def location_name=(trust)
+  self.location = Location.find_by_name(trust) if trust.present?
+end
 
 
 
