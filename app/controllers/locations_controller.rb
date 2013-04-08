@@ -1,9 +1,9 @@
 class LocationsController < ApplicationController
    def index
-    @locations = Location.all
+    @location = Location.all
   end
   def show
-    @locations = Location.find(params[:id])
+    @location = Location.find(params[:id])
     respond_to do |format|
     
 
