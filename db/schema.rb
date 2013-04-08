@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406134306) do
+ActiveRecord::Schema.define(:version => 20130408093407) do
 
   create_table "courses", :force => true do |t|
     t.string   "title"
@@ -70,9 +70,8 @@ ActiveRecord::Schema.define(:version => 20130406134306) do
     t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.boolean  "admin",           :default => false, :null => false
-    t.string   "trust"
-    t.string   "hospital"
     t.string   "last_name"
+    t.integer  "location_id"
   end
 
 end
