@@ -11,10 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
-$('#hint').tooltip('show')
+
 
 $(document).ready(function(){       
 $('#modal-from-dom').modal('hide')
@@ -23,4 +24,13 @@ $('#modal-from-dom').modal('hide')
 
 
 
+
+
+$(document).ready(function() {
+    $('.home-page-menu-item a').each(function() {
+        // IS this the active link?
+        if ($(this).attr('href') == $(location).attr('pathname'))
+            $(this).parent().addClass("active")
+    })
+})
 

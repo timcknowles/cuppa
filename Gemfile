@@ -14,6 +14,9 @@ gem 'pdfkit'
 gem 'unicorn'
 gem 'wkhtmltopdf-binary'
 gem 'google_drive'
+gem 'mercury-rails'
+gem 'simple_form'
+
 
 
 # Gems used only for assets and not required
@@ -51,3 +54,4 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'paperclip'
