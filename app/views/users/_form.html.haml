@@ -13,12 +13,12 @@
    
   =f.input :mobile
 
-  =f.association :location, collection: Location.trust.all(order:'trust ASC'), prompt: "Choose a hospital", label_method: :trust, value_method: :id, include_blank: false
+  /=f.association :location, collection: Location.trust.all(order:'trust ASC'), prompt: "Choose a hospital", label_method: :trust, value_method: :id, include_blank: false
 
  
   = f.text_field :location_name, data: {autocomplete_source: locations_path} 
 
-  %input.span3{"data-items" => "8", "data-provide" => "typeahead", "data-source" => @locations.to_json, :style => "margin: 0 auto;", :type => "text"}
+  /%input.span3{"data-items" => "8", "data-provide" => "typeahead", "data-source" => @locations.to_json, :style => "margin: 0 auto;", :type => "text"}
  
 
   -if user_logged_in? && current_user.admin?
