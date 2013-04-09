@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @location = Location.order(:trust).where("trust like ?", "%#{params[:term]}%")
+    @location = Location.order(:trust).where("LOWER(trust) like LOWER(?)", "%#{params[:term]}%")
     render json: @location.map(&:trust)
     end
   def show
