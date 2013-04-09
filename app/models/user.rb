@@ -16,7 +16,7 @@ def trust
 end
 
 def trust=(trust)
-  self.location = Location.find_by_trust(trust) if trust.present?
+  self.location = Location.find_or_create_by_trust(trust) if trust.present?
 end
 
 
