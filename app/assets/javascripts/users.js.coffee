@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#user_location_name').autocomplete
-     source: $('#user_location_name').data('autocomplete-source')
+  $('#user_trust').autocomplete
+     source: $('#user_trust').data('autocomplete-source')
