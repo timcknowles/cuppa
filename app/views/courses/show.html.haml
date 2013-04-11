@@ -38,6 +38,19 @@
         %td= registration.waiting_list ? "Waiting List" : "Registered"
         %td= link_to 'Delete', registration, :method => :delete, :data => { :confirm => 'Are you sure?' }
         
+      
+    =form_for  @course do |f|
+
+      =f.fields_for :registrations do |registration_fields|
+        %tr
+          
+          %td= registration_fields.check_box(:paid)
+          %td= registration_fields.check_box(:feedback_form_completed)
+
+
+      =f.submit "update"
+
+
 
             
 
