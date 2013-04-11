@@ -15,11 +15,7 @@ Cuppa::Application.routes.draw do
     get "certificate", on: :member
   end
 
-  resources :registrations do
-    member do
-    put :toggle
-    end
-  end
+ 
 
   resources :courses
   resources :users

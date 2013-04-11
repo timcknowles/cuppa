@@ -34,10 +34,7 @@ class RegistrationsController < ApplicationController
 
   
 
-  def toggle
-   @registration = Registration.find(params[:id])
-   @registration.toggle(:feedback_form_completed)
-  end 
+
 
   def destroy
     if user_logged_in? && current_user.admin?
