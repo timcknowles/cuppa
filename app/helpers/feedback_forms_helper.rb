@@ -11,7 +11,7 @@ module FeedbackFormsHelper
       select_tag(id, options_for_select(question.possible_answers_array))
 
     when FeedbackQuestion::QuestionType.agreement_level
-       content_tag(:table) do
+       content_tag(:table, class: "feedback_question_agreement_level") do
          content_tag(:tr) do
            content_tag(:th, "Strongly Disagree") + 
            content_tag(:th, "Disagree") + 
@@ -31,13 +31,15 @@ module FeedbackFormsHelper
        end
     when FeedbackQuestion::QuestionType.radio_buttons
       i = 0
-      safe_join(question.possible_answers_array.map do |answer|
-        i += 1
-        content_tag :div do
-          radio_button_tag(id, answer, id: id) + 
-          label_tag("#{id}_#{i}", answer, style: "display:inline")
-        end
-      end)
+      content_tag :div, class: "feedback_question_radio_buttons" do
+        safe_join(question.possible_answers_array.map do |answer|
+          i += 1
+          content_tag :div do
+            radio_button_tag(id, answer, id: id) + 
+            label_tag("#{id}_#{i}", answer, style: "display:inline")
+          end
+        end)
+      end
     end
 
   end
