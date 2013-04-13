@@ -1,5 +1,3 @@
-
-
 As a course candidate:
 
 I should be able to see all of the courses on offer at 
@@ -37,3 +35,29 @@ I will be able to email all candiates registered on a course.
 Only admins will have access to the users view
 
 
+
+Forms
+=====
+Question
+  -> Free Text
+  -> Agreement Level (Strong -> Not at all)
+  -> Drop Down Options
+  -> Radio Buttons
+
+Free Text
+-> Question.
+
+Agreement.
+-> Question
+
+Drop Down Options
+-> Question
+-> Possible answers
+
+Radio Buttons
+-> Question
+-> Possible answers
+
+Questions -> Course
+FeedbackForm -> Registration
+FeedbackAnswer -> FeedbackForm, Question

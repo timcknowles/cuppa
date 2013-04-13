@@ -1,0 +1,11 @@
+=form_for [:admin, @course, @question] do |f|
+    =f.label :content, "Question"
+    =f.text_area :content, style: "width:500px;height:100px"
+
+    =f.label :question_type_id
+    =f.select :question_type_id, FeedbackQuestion::QuestionType.items_for_select
+
+    =f.label :possible_answers, "Possible Answers (Seperate on new lines)"
+    =f.text_area :possible_answers, style: "width:500px;height:300px"
+
+    %p= f.submit "Save Question"

@@ -1,0 +1,12 @@
+%h2 Registration for #{@registration.user.name}
+
+-if @registration.feedback_form
+    -@registration.feedback_form.answers.each do |answer|
+        %p
+            Question:
+            =answer.feedback_question.content
+        %p
+            Answer:
+            = answer.answer
+-else
+    Feedback form not completed

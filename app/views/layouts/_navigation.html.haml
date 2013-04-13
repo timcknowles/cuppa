@@ -1,25 +1,26 @@
 
 %ul.nav
   - if user_logged_in?
-    %li.home-page-menu-item 
-      = link_to 'Logout',logout_path(@session)
-    %li.home-page-menu-item
-      = link_to("#{current_user.email}", '#')
+    /%li.home-page-menu-item
+    /  Logged in as #{current_user.email}
 
-    %li.home-page-menu-item
-      = link_to 'My Courses', registrations_path
-  
+    %li.home-page-menu-item 
+      = link_to courses_path do
+        .icon-user.icon-white
+        List Courses
+
     %li.home-page-menu-item 
       = link_to registrations_path do
-        .i{:class=>'icon-user icon-white'}
+        .icon-user.icon-white
         My Courses
             
-       
     %li.home-page-menu-item 
       = link_to edit_user_path(current_user) do
-        .i{:class=>'icon-wrench icon-white'}
-        Edit
+        .icon-wrench.icon-white
+        Edit Details
 
+    %li.home-page-menu-item 
+      = link_to 'Logout',logout_path(@session)
 
   - else
     %li.home-page-menu-item
@@ -29,4 +30,4 @@
 
   -if user_logged_in? && current_user.admin?
     %li.home-page-menu-item 
-      = link_to 'Users', users_path
+      = link_to 'Admin', admin_path

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  registration_id: 1
+  completed_at: 2013-04-13 16:40:03
+
+two:
+  registration_id: 1
+  completed_at: 2013-04-13 16:40:03

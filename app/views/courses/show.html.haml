@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %p
   %b Title:
   = @course.title
@@ -19,43 +17,8 @@
   %b Price:
   = @course.price
 
--if user_logged_in? && current_user.admin?
+%p 
+  %b Places Remaining
+  = course_places_remaining(@course)
 
-  %h2 Registered Participants
-  %table
-    %tr
-      %th User
-      %th Feedback Form Completed?
-      %th Certificate Sent?
-      %th Paid?
-      %th status
-    -@course.registrations.each do |registration|
-      %tr
-        %td= registration.user.name
-        %td= registration.feedback_form_completed ? "Yes" : "No"
-        %td= registration.certificate_sent ? "Yes" : "No"
-        %td= registration.paid ? "Yes" : "No"
-        %td= registration.waiting_list ? "Waiting List" : "Registered"
-        %td= link_to 'Delete', registration, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        
-      
-    =form_for  @course do |f|
-
-      =f.fields_for :registrations do |registration_fields|
-        %tr
-          
-          %td= registration_fields.check_box(:paid)
-          %td= registration_fields.check_box(:feedback_form_completed)
-
-
-      =f.submit "update"
-
-
-
-            
-
-
-
-= link_to 'Edit', edit_course_path(@course)
-\|
 = link_to 'Back', courses_path

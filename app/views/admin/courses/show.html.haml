@@ -1,0 +1,64 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @course.title
+%p
+  %b Start time:
+  = @course.start_time
+%p
+  %b End time:
+  = @course.end_time
+%p
+  %b Venue:
+  = @course.venue
+%p
+  %b Description:
+  = @course.description
+%p
+  %b Price:
+  = @course.price
+
+= link_to 'Edit', edit_admin_course_path(@course)
+
+%h2 Registered Participants
+%table
+  %tr
+    %th User
+    %th Waiting List?
+    %th Paid?
+    %th Feedback Form Completed?
+    %th Certificate Sent?
+    %th status
+  -@course.registrations.each do |registration|
+    %tr
+      %td= registration.user.name
+      %td= registration.waiting_list ? "Waiting List" : "Registered"
+      %td
+        = registration.paid?? "Yes" : "No"
+        =surround("(", ")") do
+          =link_to "Toggle", toggle_paid_admin_registration_path(registration), method: :put
+      %td
+        =registration.feedback_form ? "Yes" : "No"
+      %td= registration.certificate_sent ? "Yes" : "No"
+      %td= link_to 'Show', admin_registration_path(registration)
+      %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' }
+    
+%h2 Feedback Questions
+%table
+  %th Question
+  %th Type
+  %th{colspan:3}
+
+  -@course.feedback_questions.each do |question|
+    %tr
+      %td= question.content
+      %td= question.question_type
+      %td= link_to "Show", [:admin, @course, question]
+      %td= link_to "Edit", edit_admin_course_feedback_question_path(@course, question)
+      %td= link_to "Destroy", [:admin, @course, question], method: :delete
+
+
+
+%p= link_to "New Question", new_admin_course_feedback_question_path(@course)
+= link_to 'Back', admin_courses_path

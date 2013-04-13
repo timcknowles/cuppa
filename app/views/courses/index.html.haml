@@ -28,19 +28,8 @@
       %td= number_to_currency(course.price, :unit => "&pound;", :separator => ",", :delimiter => "")
       %td= course.places_available
       %td= pluralize course.users.size, 'place'
-      %td= pluralize course.places_remaining, 'place'
+      %td= course_places_remaining(course)
       %td= link_to 'Show', course, :class => 'btn btn-mini btn-primary'
-      -if user_logged_in? && current_user.admin?
-        %td= link_to 'Edit', edit_course_path(course), :class => 'btn btn-mini btn-primary'
-        %td= link_to 'Delete', course, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
            
-      -if course.places_remaining > 0
-        %td= link_to "Register", registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'
-      -else
-        %td= link_to "Add me to the waiting list", new_user_path(@user), :class => 'btn btn-mini btn-primary'
 
--if user_logged_in? && current_user.admin?
-
-  %br
-
-  = link_to 'Add a New Course', new_course_path, :class => 'btn btn-small btn-success'
+      %td= link_to register_btn_text(course), registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'

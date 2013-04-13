@@ -1,30 +1,41 @@
 Cuppa::Application.routes.draw do
-  resources :locations
 
-
-    namespace :mercury do
-      resources :images
+  namespace :admin do
+    resources :feedback_answers
+    resources :feedback_forms
+    resources :courses do
+      resources :feedback_questions
     end
+    resources :users, only: [:index, :show]
+    resources :registrations, only: [:show, :destroy] do
+      member do
+        put :toggle_paid
+      end
+    end
+  end
+  get "/admin" => redirect("/admin/courses")
 
+  namespace :mercury do
+    resources :images
+  end
   mount Mercury::Engine => '/'
 
   get "help/demo"
 
-  root :to => "courses#index"
   resources :registrations do
+    resource :feedback_form
     get "certificate", on: :member
   end
 
- 
-
-  resources :courses
-  resources :users
+  resources :locations
+  resources :courses, only: [:index, :show]
+  resources :users, except: [:index]
   resources :sessions
-  resources :registrations
-  
+  resources :registrations, except: [:destroy]
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
-  end
+  root :to => "courses#index"
+end
