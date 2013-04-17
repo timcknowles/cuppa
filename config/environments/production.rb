@@ -20,8 +20,8 @@ Cuppa::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.action_controller.asset_host = Proc.new { |source, request|
-  if request.env["REQUEST_PATH"].include? ".pdf"
+  config.action_controller.asset_host = Proc.new { |source, request = false|
+  if request && request.env["REQUEST_PATH"].include?(".pdf")
     "file://#{Rails.root.join('public')}"
   else
     "#{request.protocol}#{request.host_with_port}"
