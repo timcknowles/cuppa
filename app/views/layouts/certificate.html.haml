@@ -1,7 +1,7 @@
 !!!
 %html
   %head.head
-  = stylesheet_link_tag "certificates", :media => "all"
+    = stylesheet_link_tag "certificates", :media => "all"
               
   %body.body
     =pdf_image_tag("STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none;")
@@ -10,8 +10,6 @@
       = yield
         
 %footer.footer
-  /img src="https://s3-eu-west-1.amazonaws.com/cuppa/signature.png" style="position:fixed; bottom: 15mm; left: 80mm; border-bottom: 1px dashed black;">
-
   %h3 Dr Martin Carby
   %p Clinical Tutor and Consultant Respiratory &amp; Transplant Physician: Director for Simulation at Harefield Hospital 
 
