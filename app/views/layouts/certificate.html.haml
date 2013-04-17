@@ -3,21 +3,15 @@
   %head.head
   = stylesheet_link_tag "certificates", :media => "all"
               
-   
   %body.body
-    =pdf_image_tag(src: "assets/images/STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none; ")
-    /img src="https://s3-eu-west-1.amazonaws.com/cuppa/rbht_logo_new.gif" style="position:fixed; top: 10mm; left: 10mm">
+    =image_tag("STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none;")
 
     .course
-
       = yield
-
-   
-
         
 %footer.footer
   /img src="https://s3-eu-west-1.amazonaws.com/cuppa/signature.png" style="position:fixed; bottom: 15mm; left: 80mm; border-bottom: 1px dashed black;">
 
   %h3 Dr Martin Carby
-  %p Clinical Tutor and Consultant Respiratory & Transplant Physician: Director for Simulation at Harefield Hospital 
+  %p Clinical Tutor and Consultant Respiratory &amp; Transplant Physician: Director for Simulation at Harefield Hospital 
 
