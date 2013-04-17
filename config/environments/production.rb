@@ -26,7 +26,7 @@ Cuppa::Application.configure do
   #else
   #  "#{request.protocol}#{request.host_with_port}"
   #end
-}
+  #}
 
 
 
