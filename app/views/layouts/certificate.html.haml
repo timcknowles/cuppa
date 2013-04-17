@@ -4,7 +4,7 @@
   = stylesheet_link_tag "certificates", :media => "all"
               
   %body.body
-    =image_tag("STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none;")
+    =pdf_image_tag("STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none;")
 
     .course
       = yield
