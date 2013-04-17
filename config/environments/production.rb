@@ -20,13 +20,13 @@ Cuppa::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.action_controller.asset_host = Proc.new { |source, request|
-  if request.env["REQUEST_PATH"].include? ".pdf"
-    "file://#{Rails.root.join('public')}"
-  else
-    "#{request.protocol}#{request.host_with_port}"
-  end
-}
+  #config.action_controller.asset_host = Proc.new { |source, request = false|
+  #if request && request.env["REQUEST_PATH"].include?(".pdf")
+  #  "file://#{Rails.root.join('public')}"
+  #else
+  #  "#{request.protocol}#{request.host_with_port}"
+  #end
+  #}
 
 
 
@@ -57,7 +57,7 @@ Cuppa::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( certificates.css )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

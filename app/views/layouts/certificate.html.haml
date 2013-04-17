@@ -1,23 +1,44 @@
 !!!
 %html
   %head.head
-  = stylesheet_link_tag "certificates", :media => "all"
-              
-   
-  %body.body
-    =pdf_image_tag(src: "assets/images/STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none; ")
-    /img src="https://s3-eu-west-1.amazonaws.com/cuppa/rbht_logo_new.gif" style="position:fixed; top: 10mm; left: 10mm">
+    :css
+      body {
+            width: auto;
+            text-align: center;
+            margin: 0mm;
+            height: 138mm;
+            padding: 20mm;
+            border: 5mm;
+            border-color: #005793;
+            border-style: ridge;
+            border-width: 3mm;
+        }
+
+          .course {
+            position: fixed;
+            width: auto;
+            text-align: center;
+            top: 30mm;
+            left: 20mm;
+          }
+         
+         footer {
+            position: absolute;
+            top: 155mm;
+            left: 20mm;
+            text-align: left;
+         }
+         img {
+
+         opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none;
+         }
+    
+  %body
 
     .course
-
       = yield
-
-   
-
         
-%footer.footer
-  /img src="https://s3-eu-west-1.amazonaws.com/cuppa/signature.png" style="position:fixed; bottom: 15mm; left: 80mm; border-bottom: 1px dashed black;">
-
+%footer
   %h3 Dr Martin Carby
-  %p Clinical Tutor and Consultant Respiratory & Transplant Physician: Director for Simulation at Harefield Hospital 
+  %p Clinical Tutor and Consultant Respiratory &amp; Transplant Physician: Director for Simulation at Harefield Hospital 
 
