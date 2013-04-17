@@ -19,7 +19,7 @@
             width: auto;
             text-align: center;
             top: 30mm;
-            left: 20mm;
+            left: 60mm;
           }
          
          footer {
@@ -34,6 +34,7 @@
          }
     
   %body
+    =pdf_image_tag("STaR_logo.jpg", style: "opacity: 0.3;position:fixed;top:40mm;left:5mm;width: 260mm; border: none;")
 
     .course
       = yield
