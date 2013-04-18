@@ -1,6 +1,6 @@
 =form_tag registration_feedback_form_path, method: :post do
     -@registration.course.feedback_questions.each do |question|
-        =label_tag :answer, question.content
+        =label_tag :answer, question.content, :class => "feedback_questions"
         =edit_question_field(question)
 
     =submit_tag "Complete Feedback Form"

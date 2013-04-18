@@ -20,7 +20,7 @@ module FeedbackFormsHelper
            content_tag(:th, "Strongly Agree") + 
            content_tag(:th, "N/A")
          end + 
-         content_tag(:tr) do
+         content_tag(:tr, class: "radio_buttons",) do
            content_tag(:td, radio_button_tag(id, "Strongly Disagree")) + 
            content_tag(:td, radio_button_tag(id, "Disagree")) + 
            content_tag(:td, radio_button_tag(id, "Neutral")) + 

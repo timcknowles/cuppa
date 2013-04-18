@@ -7,13 +7,29 @@
 }
 @import "bootstrap-responsive";
 
+.feedback_questions {
+
+  font-weight: bold;
+  color: #0044cc;
+  font-size: 20px;
+  line-height: 40px;
+
+}
 
 
-.feedback_question_radio_buttons {
 
-  background-color: red;
+.feedback_question_agreement_level {
+
+  text-align: center;
+
 }
  
+input[type="radio"] {
+
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
 
 .def {
   font-family: hevetica;

@@ -22,7 +22,7 @@
 = link_to 'Edit', edit_admin_course_path(@course)
 
 %h2 Registered Participants
-%table
+%table.table.table-bordered.table-striped.table-hover
   %tr
     %th User
     %th Waiting List?
@@ -45,7 +45,7 @@
       %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' }
     
 %h2 Feedback Questions
-%table
+%table.table.table-bordered.table-striped.table-hover
   %th Question
   %th Type
   %th{colspan:3}
