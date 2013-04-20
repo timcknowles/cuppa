@@ -48,4 +48,14 @@
 
 
 %p= link_to "view form questions", admin_course_feedback_questions_path(@course)
+
+
+%table
+  %tr
+    %th Name
+    -@course.feedback_questions.each do |question|
+      %th= question.content
+  
+      -@registration.feedback_answers.each do |answer|
+        %tr= answer.answer
 = link_to 'Back', admin_courses_path
