@@ -1,4 +1,4 @@
-%p#notice= notice
+%h1 Registration Details:
 
 %p
   %b Name:
@@ -10,24 +10,16 @@
   %b Mobile:
   = @user.mobile
 
-%h2 Registered Courses
-%table.table-striped.table-hover
-  %tr
-    %th Course
-    %th Feedback Form Completed?
-    %th Certificate Sent?
-    %td Paid?
-    %th status
-    %th Certificate PDF
-  -@user.registrations.each do |registration|
-    %tr
-      %td= registration.course.title
-      %td= registration.feedback_form_completed ? "Yes" : "No"
-      %td= registration.certificate_sent ? "Yes" : "No"
-      %td= registration.paid ? "Yes" : "No"
-      %td= registration.waiting_list ? "Waiting List" : "Registered"
-      %td= link_to "Click for certficate", certificate_registration_path(registration) 
+%h2 Thanks #{@user.name}, you have successfully registered:
+%h3 What happens next?
+%p You can log in to this site to view your registration. Your courses will be available in the #{link_to "My Courses",registrations_path} section of the website. After a course you will be invited to complete a feedback form found in this area. On completion of the feedbacl form your certificate will become available. 
 
+
+
+
+
+
+    
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path

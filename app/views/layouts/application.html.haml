@@ -31,7 +31,10 @@
             .icon-bar
           = link_to "Cuppa", root_path, :class => 'brand'
           .nav-collapse.collapse
-            = render 'layouts/navigation' 
+            -if user_logged_in? && current_user.admin?
+              = render 'layouts/admin_navigation'
+            -else 
+              = render 'layouts/navigation'
   
    
     = yield
