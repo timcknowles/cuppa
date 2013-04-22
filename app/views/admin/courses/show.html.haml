@@ -1,63 +1,66 @@
 %p#notice= notice
 
 %p
-  %b Title:
-  = @course.title
+    %b Title:
+    = @course.title
 %p
-  %b Start time:
-  = @course.start_time
+    %b Start time:
+    = @course.start_time
 %p
-  %b End time:
-  = @course.end_time
+    %b End time:
+    = @course.end_time
 %p
-  %b Venue:
-  = @course.venue
+    %b Venue:
+    = @course.venue
 %p
-  %b Description:
-  = @course.description
+    %b Description:
+    = @course.description
 %p
-  %b Price:
-  = @course.price
+    %b Price:
+    = @course.price
 
 = link_to 'Edit', edit_admin_course_path(@course)
 
 %h2 Registered Participants
 %table.table.table-bordered.table-striped.table-hover
-  %tr
-    %th User
-    %th Waiting List?
-    %th Paid?
-    %th Feedback Form Completed?
-    %th Certificate Sent?
-    %th status
-  -@course.registrations.each do |registration|
     %tr
-      %td= registration.user.name
-      %td= registration.waiting_list ? "Waiting List" : "Registered"
-      %td
-        = registration.paid?? "Yes" : "No"
-        =surround("(", ")") do
-          =link_to "Toggle", toggle_paid_admin_registration_path(registration), method: :put
-      %td
-        =registration.feedback_form ? "Yes" : "No"
-      %td= registration.certificate_sent ? "Yes" : "No"
-      %td= link_to 'Show', admin_registration_path(registration)
-      %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' }
-    
-%h2 Feedback Form
-
-
-%p= link_to "view form questions", admin_course_feedback_questions_path(@course)
-
-
-%table
-  %tr
-    %th Name
-    -@course.feedback_questions.each do |question|
-      %th= question.content
+        %th User
+        %th Waiting List?
+        %th Paid?
+        %th Feedback Form Completed?
+        %th Certificate Sent?
+        %th status
     -@course.registrations.each do |registration|
-      -registration.feedback_answers.each do |answer|
-        %tr= answer.answer
+        %tr
+            %td= registration.user.name
+            %td= registration.waiting_list ? "Waiting List" : "Registered"
+            %td
+                = registration.paid?? "Yes" : "No"
+                =surround("(", ")") do
+                    =link_to "Toggle", toggle_paid_admin_registration_path(registration), method: :put
+            %td=registration.feedback_form ? "Yes" : "No"
+            %td= registration.certificate_sent ? "Yes" : "No"
+            %td= link_to 'Show', admin_registration_path(registration)
+            %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%h2 Feedback Responses
+
+%p= link_to "Edit Questions", admin_course_feedback_questions_path(@course)
+
+-num_questions = @course.feedback_questions.length
+%table.table.table-bordered.table-striped.table-hover
+    %tr
+        %th Name
+        -@course.feedback_questions.each do |question|
+            %th= question.content
+    -@course.registrations.each do |registration|
+        %tr
+            %td= registration.user.name
+            -if registration.feedback_form
+                -registration.feedback_form.answers.each do |answer|
+                    %td= answer.answer
+            -else
+                %td.not_completed{colspan: num_questions, style: "text-align:center"} Has not completed form.
 
 
 = link_to 'Back', admin_courses_path
