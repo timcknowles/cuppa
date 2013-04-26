@@ -10,4 +10,9 @@ class UserMailer < ActionMailer::Base
     
     mail(:to => user.email, :subject => "reminder")
   end
+
+  def feedback(user)
+    
+    mail(:to => user.email, :subject => "Please complete feedback")
+  end
 end
