@@ -16,6 +16,12 @@ class Registration < ActiveRecord::Base
     true
   end
 
+  after_create do
+    UserMailer.delay(run_at: course.start_time.getutc - 10.minutes).registration_confirmation(user)
+    true
+    
+  end
+
   def toggle_paid!
     self.paid = !self.paid
     save!

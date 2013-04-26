@@ -42,7 +42,6 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         current_user = @user
         @user.registrations.create(course: @course) if @course
-        UserMailer.registration_confirmation(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
