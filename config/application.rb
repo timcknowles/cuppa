@@ -64,6 +64,6 @@ module Cuppa
     end
 
     config.middleware.use "PDFKit::Middleware", :print_media_type => true, :orientation => 'Landscape', :page_size=>'A4', :margin_left=>'0.4in', :margin_right=>'0.4in', :margin_top=>'0.4in', :margin_bottom=>'0.4in'
- 
+    config.time_zone = 'London'
   end
 end
