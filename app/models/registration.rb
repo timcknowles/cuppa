@@ -19,7 +19,7 @@ class Registration < ActiveRecord::Base
   after_create do
     UserMailer.delay.registration_confirmation(user)
     true
-    UserMailer.delay(run_at: course.start_time.getutc.in_time_zone("London") - 5.minutes).reminder(user)
+    UserMailer.delay(run_at: course.start_time.getutc.in_time_zone("London") - 1.week).reminder(user)
     true
     UserMailer.delay(run_at: course.end_time.getutc.in_time_zone("London")).feedback(user)
     true
