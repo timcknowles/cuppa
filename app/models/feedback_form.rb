@@ -3,4 +3,12 @@ class FeedbackForm < ActiveRecord::Base
 
   belongs_to :registration
   has_many :answers, class_name: "FeedbackAnswer"
+
+  after_create do 
+    self.completed_at = Time.now
+    save!
+
+    true
+
+  end
 end
