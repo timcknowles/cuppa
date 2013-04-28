@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-
+  before_filter :user_logged_in, only: [:edit, :update]
+  
+  def user_logged_in
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless user_logged_in?(@user)
+    end
   # GET /users/1
   # GET /users/1.json
   def show
@@ -27,8 +32,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
-    @user.assign_attributes(params[:admin], :as => :admin)
+    #@user = User.find(params[:id])
+    
+   
   end
 
   # POST /users
@@ -68,4 +74,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  
+
 end

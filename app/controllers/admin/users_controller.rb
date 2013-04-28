@@ -8,7 +8,10 @@ class Admin::UsersController < AdminController
       format.json { render json: @users }
     end
   end
-
+  def edit
+    @user = User.find(params[:id])
+    @user.assign_attributes(params[:admin], :as => :admin)
+  end
   # GET /users/1
   # GET /users/1.json
   def show

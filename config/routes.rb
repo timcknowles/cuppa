@@ -6,7 +6,7 @@ Cuppa::Application.routes.draw do
     resources :courses do
       resources :feedback_questions
     end
-    resources :users, only: [:index, :show]
+    resources :users #, only: [:index, :show, :edit]
     resources :registrations, only: [:show, :destroy] do
       member do
         put :toggle_paid

@@ -1,4 +1,4 @@
-= simple_form_for @user, { :class => 'form-horizontal'} do |f|
+= simple_form_for ([:admin, @user]), { :class => 'form-horizontal'} do |f|
 
   =f.input :name, label: "first name"
 
@@ -20,5 +20,7 @@
  
  
 
+  -if user_logged_in? && current_user.admin?
+    = f.input :admin, label:'toggle to set admin rights', :as=> :boolean
   .div
   = f.submit nil, label:'Save', :class => 'btn btn-primary'
