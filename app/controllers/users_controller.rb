@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :user_logged_in, only: [:edit, :update]
+  before_filter :logged_in_user, only: [:edit, :update, :show]
+  before_filter :correct_user,   only: [:edit, :update, :show]
   
-  def user_logged_in
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless user_logged_in?(@user)
-    end
+  
   # GET /users/1
   # GET /users/1.json
   def show
@@ -62,7 +60,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -75,6 +73,17 @@ class UsersController < ApplicationController
     end
   end
 
+
+private
+
+    def logged_in_user
+      redirect_to login_path(@session), notice: "Please sign in." unless user_logged_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
   
 
 end
