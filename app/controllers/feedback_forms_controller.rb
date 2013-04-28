@@ -10,6 +10,7 @@ class FeedbackFormsController < ApplicationController
   end
 
   def new
+  
   end
 
   def create
