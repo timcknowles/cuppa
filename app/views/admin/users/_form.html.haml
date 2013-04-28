@@ -18,9 +18,12 @@
   = f.text_field :trust, data: {autocomplete_source: locations_path} 
 
  
- 
 
-  -if user_logged_in? && current_user.admin?
-    = f.input :admin, label:'toggle to set admin rights', :as=> :boolean
+  = f.input :mailing_list, label:'If you would like to receive email updates about future courses please check the box. NB: we will never disclose your email address to third parties', :as=> :boolean
+ 
+  .div
+
+  
+  = f.input :admin, label:'toggle to set admin rights', :as=> :boolean
   .div
   = f.submit nil, label:'Save', :class => 'btn btn-primary'

@@ -28,20 +28,18 @@
         %th Waiting List?
         %th Paid?
         %th Feedback Form Completed?
-        %th Certificate Sent?
-        %th status
+        %th Delete Registration
+       
     -@course.registrations.each do |registration|
         %tr
-            %td= registration.user.name
+            %td= registration.user.name + " "+ registration.user.last_name 
             %td= registration.waiting_list ? "Waiting List" : "Registered"
             %td
                 = registration.paid?? "Yes" : "No"
                 =surround("(", ")") do
                     =link_to "Toggle", toggle_paid_admin_registration_path(registration), method: :put
             %td=registration.feedback_form ? "Yes" : "No"
-            %td= registration.certificate_sent ? "Yes" : "No"
-            %td= link_to 'Show', admin_registration_path(registration)
-            %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' } , :class => 'btn btn-mini btn-danger'
 
 %h2 Feedback Responses
 
