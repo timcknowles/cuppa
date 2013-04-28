@@ -2,7 +2,7 @@
 
 =form_tag registration_feedback_form_path, :class => "feedback_form", method: :post do
     
-    =hidden_field :completed_at, value: Time.now
+    
 
     -@registration.course.feedback_questions.each do |question|
         =label_tag :answer, question.content, :class => "feedback_questions"

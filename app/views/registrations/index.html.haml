@@ -1,22 +1,24 @@
 %h2 My Courses
-%table.table-bordered.table-striped.table-hover
+%table.table.table-bordered.table-striped.table-hover
   %tr
     %th Course
-    %th Feedback Form Completed?
-    %th Certificate Sent?
-    %td Paid?
+    %th Paid?
     %th status
+    %th Feedback form
     %th Certificate PDF
-
+     
   -@registrations.each do |registration|
     %tr
       %td= registration.course.title
-      %td= registration.feedback_form_completed ? "Yes" : "No"
-      %td= registration.certificate_sent ? "Yes" : "No"
       %td= registration.paid ? "Yes" : "No"
       %td= registration.waiting_list ? "Waiting List" : "Registered"
-      %td= link_to "Complete feedback form", new_registration_feedback_form_path(registration)
-      %td= link_to "Get certficate", certificate_registration_path(registration, format: :pdf) 
-
+      -if registration.feedback_form
+        %td completed
+      -else
+        %td= link_to "Complete feedback form", new_registration_feedback_form_path(registration)
+      -if registration.feedback_form 
+        %td= link_to "Get certficate", certificate_registration_path(registration, format: :pdf) 
+      -else
+        %td unavailable
 
   
