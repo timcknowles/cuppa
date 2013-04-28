@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   has_secure_password
   
   validates :name, presence: true
+  validates :last_name, presence: true
   validates :password, presence: true, on: :create
+
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
 

@@ -76,7 +76,7 @@ class Admin::CoursesController < AdminController
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to courses_url }
+      format.html { redirect_to admin_courses_path }
       format.json { head :no_content }
     end
   end

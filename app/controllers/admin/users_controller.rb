@@ -21,4 +21,14 @@ class Admin::UsersController < AdminController
       format.json { render json: @user }
     end
   end
+
+  def destroy
+    @course = User.find(params[:id])
+    @course.destroy
+
+    respond_to do |format|
+      format.html { redirect_to admin_users_path }
+      format.json { head :no_content }
+    end
+  end
 end
