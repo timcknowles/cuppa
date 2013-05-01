@@ -17,7 +17,7 @@
       -else
         %td= link_to "Complete feedback form", new_registration_feedback_form_path(registration)
       -if registration.feedback_form 
-        %td= link_to "Get certficate", certificate_registration_path(registration, format: :pdf) 
+        %td= link_to "Get certficate", certificate_registration_path(registration)     #, format: :pdf) 
       -else
         %td unavailable
 

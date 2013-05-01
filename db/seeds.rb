@@ -1,5 +1,6 @@
 user = User.new 
-user.name = "Tim Knowles"
+user.name = "Tim"
+user.last_name = "Knowles"
 user.mobile = ""
 user.email = "tim.c.knowles@gmail.com"
 user.password = "Foobar"

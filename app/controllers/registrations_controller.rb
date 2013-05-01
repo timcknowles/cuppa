@@ -30,6 +30,14 @@ class RegistrationsController < ApplicationController
 
   def certificate
     @registration = current_user.registrations.find(params[:id])
-    render :layout => "certificate"
+    #render :layout => "certificate"
+
+    respond_to do |format| 
+      format.pdf do
+        pdf = OrderPdf.new(@registration)
+        
+        send_data pdf.render , filename: "certificate.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 end
