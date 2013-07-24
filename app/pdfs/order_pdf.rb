@@ -9,8 +9,10 @@ class OrderPdf < Prawn::Document
         move_down 40
         image "#{Rails.root}/app/assets/images/STaR_logo_30%.jpg" , :fit => [size, size]
         image "#{Rails.root}/app/assets/images/signature.png",  :position => 325
+        stroke_color "012d5a"
+        line_width 2
+        stroke_bounds 
 
-        stroke_bounds
     	end 
     float do
         bounding_box([20, 400], :width => size, :height => size) do
@@ -22,12 +24,13 @@ class OrderPdf < Prawn::Document
             move_down 40
             text "This is certify that" , :align => :center
             move_down 10
-            text "#{@registration.user.name + " " + registration.user.last_name }" , :align => :center
+            text "#{@registration.user.name + " " + registration.user.last_name }" , :size => 20, :align => :center, :style => :bold
             move_down 10
             text "attended the" , :align => :center
             move_down 20
             text "On the" , :align => :center
-            text "#{@registration.course.start_time.strftime("%B #{@registration.course.start_time.day.ordinalize} %Y")}" , :align => :center
+            move_down 40
+            text "#{@registration.course.start_time.strftime("%B #{@registration.course.start_time.day.ordinalize} %Y")}" , :size => 20, :align => :center , :style => :bold
             end
         end
     end
