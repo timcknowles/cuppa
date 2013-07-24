@@ -18,8 +18,8 @@
   - @courses.each do |course|
     %tr
       %td= course.title
-      %td= course.start_time.to_s(:time)
-      %td= course.end_time.to_s(:time)
+      %td= course.start_time.to_s(:long)
+      %td= course.end_time.to_s(:long)
       %td= course.venue
       %td= course.description
       %td= number_to_currency(course.price, :unit => "&pound;", :separator => ",", :delimiter => "")
