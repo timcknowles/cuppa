@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20131020153418) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "places_available"
+    t.string   "certificate"
   end
 
   create_table "delayed_jobs", :force => true do |t|

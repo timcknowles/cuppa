@@ -7,7 +7,7 @@ class OrderPdf < Prawn::Document
     	move_down 10
         image "#{Rails.root}/app/assets/images/rbht_logo_new.png" , :position => 350
         move_down 40
-        image "#{Rails.root}/app/assets/images/STaR_logo_30%.jpg" , :fit => [size, size]
+        image  "#{Rails.root}"+"/public/"+"#{@registration.course.certificate_url.to_s}", :fit => [size, size]
         image "#{Rails.root}/app/assets/images/signature.png",  :position => 325
         stroke_color "012d5a"
         line_width 2
@@ -46,3 +46,4 @@ class OrderPdf < Prawn::Document
     end
 end
 
+#"#{Rails.root}/app/assets/images/STaR_logo_30%.jpg"

@@ -1,0 +1,14 @@
+#example.modal.hide.fade.in{:style => "display: none; "}
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h3 This is a Modal Heading
+  .modal-body
+    %h4 Text in a modal
+    %p You can add some text here.
+  .modal-footer
+    
+    %a.btn{"data-dismiss" => "modal", :href => "#"} Close
+ 
+%p
+  %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#example"} 
+    Show modal
