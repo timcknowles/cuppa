@@ -20,6 +20,8 @@ gem 'mercury-rails'
 gem 'simple_form'
 gem 'delayed_job_active_record'
 gem 'prawn'
+gem 'carrierwave'
+gem "rmagick"
 
 
 

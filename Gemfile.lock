@@ -36,6 +36,10 @@ GEM
       rails
     bootstrap-sass (2.1.0.0)
     builder (3.0.4)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -147,6 +151,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    rmagick (2.13.2)
     ruby-rc4 (0.1.5)
     sass (3.2.7)
     sass-rails (3.2.6)
@@ -188,6 +193,7 @@ DEPENDENCIES
   bcrypt-ruby
   belongs_to_enum
   bootstrap-sass
+  carrierwave
   coffee-rails (~> 3.2.1)
   delayed_job_active_record
   figaro
@@ -200,6 +206,7 @@ DEPENDENCIES
   pg
   prawn
   rails (= 3.2.11)
+  rmagick
   sass-rails (~> 3.2.3)
   sextant
   simple_form

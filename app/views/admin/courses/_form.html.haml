@@ -1,4 +1,4 @@
-= simple_form_for ([:admin, @course]), { :class => 'form-horizontal'} do |f|
+= simple_form_for ([:admin, @course]),  { :class => 'form-horizontal' ,  :html => {:multipart => true}} do |f|
   
 
   =f.input :title
@@ -20,6 +20,10 @@
   =f.input :price
   
   =f.input :places_available, label: 'places'
+
+  =f.input :certificate, as: :file
+
+  = render 'layouts/modal'
 
   
   = f.submit nil, label:'Save', :class => 'btn btn-primary'
