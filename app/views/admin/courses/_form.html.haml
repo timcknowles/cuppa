@@ -5,8 +5,6 @@
     =f.fields_for :course_type do |fct|
         =fct.hidden_field :id
         =fct.input :title
-
-        .mercury-region{:id => "course_description","data-mercury" => "full"}
         =fct.input :description
 
     =f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]

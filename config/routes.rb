@@ -16,11 +16,6 @@ Cuppa::Application.routes.draw do
   end
   get "/admin" => redirect("/admin/courses")
 
-  namespace :mercury do
-    resources :images
-  end
-  mount Mercury::Engine => '/'
-
   get "help/demo"
 
   resources :registrations do
