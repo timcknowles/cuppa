@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :user_logged_in?
   helper_method :current_user
 
+  before_filter :check_logged_in
+
   private
 
   def current_user
@@ -16,5 +18,12 @@ class ApplicationController < ActionController::Base
 
   def user_logged_in?
     !!current_user
+  end
+
+  def check_logged_in
+    return true if user_logged_in?
+
+    redirect_to login_path 
+    false
   end
 end

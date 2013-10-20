@@ -1,25 +1,17 @@
 = simple_form_for @user, { :class => 'form-horizontal'} do |f|
 
-  =f.input :name, label: "First name"
+    =f.input :name, label: "First name"
+    =f.input :last_name
+    =f.input :email
+    =f.input :password
+    =f.input :password_confirmation
+    =f.input :mobile
 
+    = f.label :nhs_trust, label: "NHS Trust"
+    = f.text_field :trust, data: {autocomplete_source: locations_path}
 
-  =f.input :last_name
+    %p
+        = f.check_box :mailing_list
+        = f.label :mailing_list, 'If you would like to receive email updates about future courses please check the box. NB: we will never disclose your email address to third parties', style: 'display:inline'
 
-  =f.input :email
-
-  =f.input :password
-
-  =f.input :password_confirmation
-   
-  =f.input :mobile
-
-
-  = f.label :nhs_trust, label: "NHS Trust"
-  = f.text_field :trust, data: {autocomplete_source: locations_path} 
-
- 
-  = f.input :mailing_list, label:'If you would like to receive email updates about future courses please check the box. NB: we will never disclose your email address to third parties', :as=> :boolean
- 
-
-  .div
-  = f.submit nil, label:'Register', :class => 'btn btn-primary'
+    %p= f.submit 'Register', :class => 'btn btn-primary'

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  skip_before_filter :check_logged_in
+
   before_filter :logged_in_user, only: [:edit, :update, :show]
   before_filter :correct_user,   only: [:edit, :update, :show]
-  
-  
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -18,21 +19,21 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    
+
     @course = Course.find(params[:course_id]) if params[:course_id]
-    
+
     respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @user }
-      end  
+      end
     end
-  
+
 
   # GET /users/1/edit
   def edit
     #@user = User.find(params[:id])
-    
-   
+
+
   end
 
   # POST /users
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html do
-          render action: "new" 
+          render action: "new"
         end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -84,6 +85,6 @@ private
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
-  
+
 
 end
