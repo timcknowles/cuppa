@@ -1,6 +1,7 @@
 Cuppa::Application.routes.draw do
 
   namespace :admin do
+    get '/dashboard' => "dashboard#index"
     resources :feedback_answers
     resources :feedback_forms
     resources :courses

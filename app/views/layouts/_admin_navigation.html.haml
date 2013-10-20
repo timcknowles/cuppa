@@ -2,14 +2,19 @@
     -if user_logged_in?
 
         %li.home-page-menu-item
+            = link_to admin_dashboard_path do
+                .icon-user.icon-white
+                Dashboard
+
+        %li.home-page-menu-item
             = link_to admin_courses_path do
                 .icon-user.icon-white
-                List Courses
+                Upcoming Courses
 
         %li.home-page-menu-item
             = link_to admin_users_path do
                 .icon-user.icon-white
-                List Users
+                Users
         %li.home-page-menu-item
             = link_to 'Logout admin',logout_path(@session)
 

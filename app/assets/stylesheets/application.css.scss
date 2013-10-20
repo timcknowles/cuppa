@@ -15,7 +15,9 @@ h3 {
     margin-top:30px;
 }
 
-select.date, select.time {
+select.date, select.time, 
+#start_date__2i, #start_date__1i, 
+#end_date__2i, #end_date__1i {
     width:100px;
 }
 
