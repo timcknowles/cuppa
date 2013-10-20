@@ -3,7 +3,8 @@ Cuppa::Application.routes.draw do
   namespace :admin do
     resources :feedback_answers
     resources :feedback_forms
-    resources :courses do
+    resources :courses
+    resources :course_types do
       resources :feedback_questions
     end
     resources :users #, only: [:index, :show, :edit]

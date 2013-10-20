@@ -29,10 +29,10 @@
         %th Paid?
         %th Feedback Form Completed?
         %th Delete Registration
-       
+
     -@course.registrations.each do |registration|
         %tr
-            %td= registration.user.name + " "+ registration.user.last_name 
+            %td= registration.user.name + " "+ registration.user.last_name
             %td= registration.waiting_list ? "Waiting List" : "Registered"
             %td
                 = registration.paid?? "Yes" : "No"
@@ -43,7 +43,7 @@
 
 %h2 Feedback Responses
 
-%p= link_to "Edit Questions", admin_course_feedback_questions_path(@course)
+%p= link_to "Edit Questions", admin_course_type_feedback_questions_path(@course)
 
 -num_questions = @course.feedback_questions.length
 %table.table.table-bordered.table-striped.table-hover

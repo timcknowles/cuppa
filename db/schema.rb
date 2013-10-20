@@ -11,14 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428182208) do
+ActiveRecord::Schema.define(:version => 20131020153418) do
+
+  create_table "course_types", :force => true do |t|
+    t.string "title"
+    t.text   "description"
+  end
 
   create_table "courses", :force => true do |t|
-    t.string   "title"
+    t.integer  "course_type_id",   :null => false
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "venue"
-    t.text     "description"
     t.decimal  "price"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -57,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20130428182208) do
   end
 
   create_table "feedback_questions", :force => true do |t|
-    t.integer  "course_id",        :null => false
+    t.integer  "course_type_id",   :null => false
     t.text     "content",          :null => false
     t.integer  "question_type_id", :null => false
     t.text     "possible_answers"

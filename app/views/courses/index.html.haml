@@ -13,7 +13,6 @@
     %th Places Left
     %th Course Details
     %th Click to register
-      
 
   - @courses.each do |course|
     %tr
@@ -27,5 +26,4 @@
       %td= pluralize course.users.size, 'place'
       %td= course_places_remaining(course)
       %td= link_to 'Show', course, :class => 'btn btn-mini btn-primary'
-      /-if already_registered?
       %td= link_to register_btn_text(course), registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'

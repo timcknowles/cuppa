@@ -1,21 +1,21 @@
-%h2 Feedback Questions for #{@course.title} 
+%h2 Feedback Questions for #{@course_type.title} 
 %table.table.table-bordered.table-striped.table-hover
   %th Question
   %th Type
   %th{colspan:3}
 
-  -@course.feedback_questions.each do |question|
+  -@course_type.feedback_questions.each do |question|
     %tr
       %td= question.content
       %td= question.question_type
-      %td= link_to "Show", [:admin, @course, question]
-      %td= link_to "Edit", edit_admin_course_feedback_question_path(@course, question)
-      %td= link_to "Destroy", [:admin, @course, question], method: :delete
+      %td= link_to "Show", [:admin, @course_type, question]
+      %td= link_to "Edit", edit_admin_course_type_feedback_question_path(@course_type, question)
+      %td= link_to "Destroy", [:admin, @course_type, question], method: :delete
 
 
 
-%p= link_to "New Question", new_admin_course_feedback_question_path(@course)
-= link_to 'Back',  admin_course_path(@course)
+%p= link_to "New Question", new_admin_course_type_feedback_question_path(@course_type)
+= link_to 'Back',  admin_course_path(@course_type)
 
 
 

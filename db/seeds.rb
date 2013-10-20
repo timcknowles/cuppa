@@ -4,10 +4,8 @@ user.last_name = "Knowles"
 user.mobile = ""
 user.email = "tim.c.knowles@gmail.com"
 user.password = "Foobar"
-
 user.admin = true
 user.save!
-
 
 require 'csv'
 

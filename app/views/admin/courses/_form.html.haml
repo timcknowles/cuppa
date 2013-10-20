@@ -1,28 +1,41 @@
 = simple_form_for ([:admin, @course]), { :class => 'form-horizontal'} do |f|
-  
 
-  =f.input :title
+    =f.select(:course_type_id, course_types.unshift(["New Course Type", 0]))
 
-  =f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
+    =f.fields_for :course_type do |fct|
+        =fct.hidden_field :id
+        =fct.input :title
 
-  =f.input :start_time, :as=> :time, :minute_step => 15
+        .mercury-region{:id => "course_description","data-mercury" => "full"}
+        =fct.input :description
 
-  =f.input :end_time, :as=> :time, :minute_step => 15
+    =f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
 
-  =f.input :venue
-  .mercury-region{:id => "course_description","data-mercury" => "full"}
-  =f.input :description 
- 
-  =f.label "Description"
-  .mercury-region{:id => "course_description","data-mercury" => "full"}
-    = @course.description
-    &nbsp;
-  =f.input :price
-  
-  =f.input :places_available, label: 'places'
+    =f.input :start_time, :as=> :time, :minute_step => 15
 
-  
-  = f.submit nil, label:'Save', :class => 'btn btn-primary'
-  
+    =f.input :end_time, :as=> :time, :minute_step => 15
 
+    =f.input :venue
 
+    =f.input :price
+
+    =f.input :places_available, label: 'Places'
+
+    = f.submit nil, label:'Save', :class => 'btn btn-primary'
+
+:javascript
+    function setupCourseTypeForm() {
+        val = $('#course_course_type_id').val()
+        if(val == 0) {
+            $('#course_course_type_attributes_id').val(null)
+            $('.course_course_type_title').show()
+            $('.course_course_type_description').show()
+        }
+        else {
+            $('#course_course_type_attributes_id').val(val)
+            $('.course_course_type_title').hide()
+            $('.course_course_type_description').hide()
+        }
+    }
+    setupCourseTypeForm();
+    $('#course_course_type_id').change(setupCourseTypeForm);
