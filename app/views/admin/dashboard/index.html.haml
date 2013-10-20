@@ -1,12 +1,12 @@
 %h2 Dashboard
 
 %h3 Filter
-=form_tag url: admin_dashboard_path do
+=form_tag admin_dashboard_path, method: :get do
     %p
         Courses between
         =select_date(@start_time, only: [:month, :year], order: [:month, :year], prefix: :start_time)
         and
-        =select_date(@end_time, only: [:month, :year], order: [:month, :year], prefix: :end_time))
+        =select_date(@end_time, only: [:month, :year], order: [:month, :year], prefix: :end_time)
         =submit_tag("Filter", class: 'btn btn-primary')
 
 %h3 Courses
