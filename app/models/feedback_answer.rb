@@ -4,5 +4,4 @@ class FeedbackAnswer < ActiveRecord::Base
   belongs_to :feedback_form
   belongs_to :feedback_question
 
-
 end

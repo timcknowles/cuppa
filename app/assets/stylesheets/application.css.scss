@@ -7,12 +7,20 @@
 }
 @import "bootstrap-responsive";
 
-h1 {
+h1, h2, h3, h4, h5 {
     font-weight:300;
 }
 
-h2 {
-    font-weight:300;
+h3 {
+    margin-top:30px;
+}
+
+select.date, select.time {
+    width:100px;
+}
+
+#course_price, #course_places_available {
+    width:70px;
 }
 
 .feedback_questions {

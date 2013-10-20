@@ -1,39 +1,7 @@
-= simple_form_for ([:admin, @course]), { :class => 'form-horizontal'} do |f|
+=f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
+=f.input :start_time, :as => :time, :minute_step => 15
+=f.input :end_time, :as => :time, :minute_step => 15
+=f.input :venue
+=f.input :price
+=f.input :places_available, label: 'Places'
 
-    =f.select(:course_type_id, course_types.unshift(["New Course Type", 0]))
-
-    =f.fields_for :course_type do |fct|
-        =fct.hidden_field :id
-        =fct.input :title
-        =fct.input :description
-
-    =f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
-
-    =f.input :start_time, :as=> :time, :minute_step => 15
-
-    =f.input :end_time, :as=> :time, :minute_step => 15
-
-    =f.input :venue
-
-    =f.input :price
-
-    =f.input :places_available, label: 'Places'
-
-    = f.submit nil, label:'Save', :class => 'btn btn-primary'
-
-:javascript
-    function setupCourseTypeForm() {
-        val = $('#course_course_type_id').val()
-        if(val == 0) {
-            $('#course_course_type_attributes_id').val(null)
-            $('.course_course_type_title').show()
-            $('.course_course_type_description').show()
-        }
-        else {
-            $('#course_course_type_attributes_id').val(val)
-            $('.course_course_type_title').hide()
-            $('.course_course_type_description').hide()
-        }
-    }
-    setupCourseTypeForm();
-    $('#course_course_type_id').change(setupCourseTypeForm);
