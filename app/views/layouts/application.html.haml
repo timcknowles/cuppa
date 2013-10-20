@@ -26,7 +26,8 @@
               = render 'layouts/admin_navigation'
             -else
               = render 'layouts/navigation'
-    = render 'layouts/messages'
-    = yield
+    .container
+      = render 'layouts/messages'
+      = yield
 
     %footer
