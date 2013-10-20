@@ -31,7 +31,11 @@
             %td= pluralize course.users.size, 'place'
             %td= course_places_remaining(course)
             %td= link_to 'Show', course, :class => 'btn btn-mini btn-primary'
-            %td= link_to register_btn_text(course), registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'
+            %td
+                -if registered_on(course)
+                    Registered
+                -else
+                    = link_to register_btn_text(course), registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'
 
     -if @courses.empty?
         %tr
