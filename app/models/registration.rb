@@ -1,6 +1,6 @@
 class Registration < ActiveRecord::Base
 
-  attr_accessible :course, :course_id, :paid, :feedback_form_completed
+  attr_accessible :course, :course_id, :paid, :feedback_form_completed, :certificate
 
   belongs_to :course
   belongs_to :user
