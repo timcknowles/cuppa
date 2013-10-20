@@ -1,24 +1,29 @@
+%h2 Course: #{@course.title}
+%h3 Details
 %p
-  %b Title:
-  = @course.title
+    %b Start time:
+    = @course.start_time
 %p
-  %b Start time:
-  = @course.start_time
+    %b End time:
+    = @course.end_time
 %p
-  %b End time:
-  = @course.end_time
+    %b Venue:
+    = @course.venue
 %p
-  %b Venue:
-  = @course.venue
+    %b Description:
+    = @course.description
 %p
-  %b Description:
-  = @course.description
-%p
-  %b Price:
-  = @course.price
+    %b Price:
+    = @course.price
 
 %p 
-  %b Places Remaining
-  = course_places_remaining(@course)
+    %b Places Remaining
+    = course_places_remaining(@course)
 
-= link_to 'Back', courses_path
+%h3 Course Status
+-if registered_on(@course)
+    You are Registered on this course.
+-else
+    = link_to register_btn_text(@course), registrations_path(course_id: @course.id), method: :post, :class => 'btn btn-mini btn-primary'
+
+%p= link_to 'View all courses', courses_path

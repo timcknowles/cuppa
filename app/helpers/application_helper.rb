@@ -21,4 +21,8 @@ module ApplicationHelper
   def course_types
     CourseType.order("title desc").map {|ct|[ct.title, ct.id]}
   end
+
+  def registered_on(course)
+    course.registrations.where(user_id: current_user.id).exists?
+  end
 end

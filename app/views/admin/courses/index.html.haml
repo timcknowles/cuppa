@@ -13,18 +13,18 @@
 
     - @courses.each do |course|
         %tr
-        %td= link_to course.title, admin_course_type_path(course.course_type)
-        %td= course.start_time.to_s(:long)
-        %td= course.end_time.to_s(:long)
-        %td= course.venue
-        %td= course.description
-        %td= number_to_currency(course.price, :unit => "&pound;")
-        %td
-            =course.users.size
-            \/
-            =course.places_available
-        %td= link_to 'Show', admin_course_path(course), :class => 'btn btn-mini btn-primary'
-        %td= link_to 'Edit', edit_admin_course_path(course), :class => 'btn btn-mini btn-primary'
-        %td= link_to 'Delete', admin_course_path(course), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+            %td= link_to course.title, admin_course_type_path(course.course_type)
+            %td= course.start_time.to_s(:long)
+            %td= course.end_time.to_s(:long)
+            %td= course.venue
+            %td= course.description
+            %td= number_to_currency(course.price, :unit => "&pound;")
+            %td
+                =course.users.size
+                \/
+                =course.places_available
+            %td= link_to 'Show', admin_course_path(course), :class => 'btn btn-mini btn-primary'
+            %td= link_to 'Edit', edit_admin_course_path(course), :class => 'btn btn-mini btn-primary'
+            %td= link_to 'Delete', admin_course_path(course), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
 = link_to 'Add a New Course', new_admin_course_path, :class => 'btn btn-small btn-success'
