@@ -1,4 +1,4 @@
-%h1 Registration Details:
+%h2 Your Details
 
 %p
   %b Name:
@@ -10,16 +10,5 @@
   %b Mobile:
   = @user.mobile
 
-%h2 Thanks #{@user.name}, you have successfully registered: 
-%h3 What happens next?
-%p You can log in to this site to view your registration. Your courses will be available in the #{link_to "My Courses",registrations_path} section of the website. After a course you will be invited to complete a feedback form found in this area. On completion of the feedbacl form your certificate will become available. 
-
-
-
-
-
-
     
 = link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path

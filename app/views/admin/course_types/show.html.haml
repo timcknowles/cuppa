@@ -1,0 +1,54 @@
+%h2 Course Series
+
+%p
+    %b Title:
+    = @course_type.title
+%p
+    %b Description:
+    = @course_type.description
+
+= link_to 'Edit', edit_admin_course_type_path(@course_type), class: "btn"
+
+%h3 Courses
+
+%table.table.table-bordered.table-striped.table-hover
+    %tr
+        %th Start time
+        %th End time
+        %th Venue
+        %th Price
+        %th Places available
+        %th Number Registered
+        %th Places Left
+        %th Course Details
+
+    - @course_type.courses.each do |course|
+        %tr
+            %td= course.start_time.to_s(:long)
+            %td= course.end_time.to_s(:long)
+            %td= course.venue
+            %td= number_to_currency(course.price, :unit => "&pound;")
+            %td= course.places_available
+            %td= pluralize course.users.size, 'place'
+            %td= course_places_remaining(course)
+            %td= link_to 'Show', [:admin, course], :class => 'btn btn-mini btn-primary'
+
+%h3 Feedback Responses
+-num_questions = @course_type.feedback_questions.length
+%table.table.table-bordered.table-striped.table-hover
+    %tr
+        %th Name
+        %th Course
+        -@course_type.feedback_questions.each do |question|
+            %th= question.content
+
+    -@course_type.courses.each do |course|
+        -course.registrations.each do |registration|
+            %tr
+                %td= registration.user.name
+                %td= registration.course.start_time.strftime("%d/%m/%Y")
+                -if registration.feedback_form
+                    -registration.feedback_form.answers.each do |answer|
+                        %td= answer.answer
+                -else
+                    %td.not_completed{colspan: num_questions, style: "text-align:center"} Has not completed form.

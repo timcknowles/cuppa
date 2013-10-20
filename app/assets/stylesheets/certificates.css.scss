@@ -1,7 +1,6 @@
 @import "bootstrap";
-    
-  body {
 
+body {
     width: auto;
     text-align: center;
     margin: 0mm;
@@ -11,27 +10,18 @@
     border-color: #005793;
     border-style: ridge;
     border-width: 3mm;
-  
- 
 }
-
-  .course {
+.course {
     position: fixed;
     width: auto;
     text-align: center;
     top: 30mm;
     left: 20mm;
-    
-   
+}
 
-
-  }
- 
- .footer {
-
+.footer {
     position: absolute;
     top: 155mm;
     left: 20mm;
     text-align: left;
-
  }

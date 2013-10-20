@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :registrations
   belongs_to :location
   has_secure_password
-  
+
   validates :name, presence: true
   validates :last_name, presence: true
   validates :password, presence: true, on: :create

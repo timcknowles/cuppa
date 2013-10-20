@@ -1,26 +1,21 @@
-%h1 Listing users
+%h2 Users
 
 %table.table.table-bordered.table-striped.table-hover
-  %tr
-    %th Name
-    %th Email
-    %th Mobile
-    %th Base Hospital
-    %th Details
-    %th Edit
-    %th Delete
-
-  - @users.each do |user|
     %tr
-      %td= user.name
-      %td= user.email
-      %td= user.mobile
-      %td= user.location.trust
-      %td= link_to 'Show', admin_user_path(user) , :class => 'btn btn-mini btn-primary'
-      %td= link_to 'Edit', edit_admin_user_path(user) , :class => 'btn btn-mini btn-primary'
-      %td= link_to 'Delete', admin_user_path(user), :method => :delete, :data => { :confirm => 'Are you sure?' } , :class => 'btn btn-mini btn-danger'
+        %th Name
+        %th Email
+        %th Mobile
+        %th Base Hospital
+        %th Details
+        %th Edit
+        %th Delete
 
-
-%br
-
-= link_to 'New User', new_user_path
+    - @users.each do |user|
+        %tr
+            %td= user.name
+            %td= user.email
+            %td= user.mobile
+            %td= user.location.trust
+            %td= link_to 'Show', admin_user_path(user) , :class => 'btn btn-mini btn-primary'
+            %td= link_to 'Edit', edit_admin_user_path(user) , :class => 'btn btn-mini btn-primary'
+            %td= link_to 'Delete', admin_user_path(user), :method => :delete, :data => { :confirm => 'Are you sure?' } , :class => 'btn btn-mini btn-danger'

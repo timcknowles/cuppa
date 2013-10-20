@@ -11,17 +11,8 @@
     = csrf_meta_tags
     = yield(:head)
     %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/cupertino/jquery-ui.min.css", :rel => "stylesheet", :type => "text/css"}
-  
 
-  
-  
-    
-
-    
-   
   %body.body
-    
-
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
@@ -33,12 +24,10 @@
           .nav-collapse.collapse
             -if user_logged_in? && current_user.admin?
               = render 'layouts/admin_navigation'
-            -else 
+            -else
               = render 'layouts/navigation'
-  
-   
-    = yield
-        
-    %footer
+    .container
       = render 'layouts/messages'
-      /= debug(params) if Rails.env.development?
+      = yield
+
+    %footer

@@ -1,28 +1,7 @@
-= simple_form_for ([:admin, @course]), { :class => 'form-horizontal'} do |f|
-  
-
-  =f.input :title
-
-  =f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
-
-  =f.input :start_time, :as=> :time, :minute_step => 15
-
-  =f.input :end_time, :as=> :time, :minute_step => 15
-
-  =f.input :venue
-  .mercury-region{:id => "course_description","data-mercury" => "full"}
-  =f.input :description 
- 
-  =f.label "Description"
-  .mercury-region{:id => "course_description","data-mercury" => "full"}
-    = @course.description
-    &nbsp;
-  =f.input :price
-  
-  =f.input :places_available, label: 'places'
-
-  
-  = f.submit nil, label:'Save', :class => 'btn btn-primary'
-  
-
+=f.input :start_time, label:'Date', :as=> :date, :order => [:month, :day, :year]
+=f.input :start_time, :as => :time, :minute_step => 15
+=f.input :end_time, :as => :time, :minute_step => 15
+=f.input :venue
+=f.input :price
+=f.input :places_available, label: 'Places'
 

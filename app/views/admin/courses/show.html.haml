@@ -1,4 +1,4 @@
-%p#notice= notice
+%h2 Viewing Course
 
 %p
     %b Title:
@@ -17,11 +17,11 @@
     = @course.description
 %p
     %b Price:
-    = @course.price
+    %td= number_to_currency(@course.price, :unit => "&pound;")
 
-= link_to 'Edit', edit_admin_course_path(@course)
+= link_to 'Edit', edit_admin_course_path(@course), class: "btn"
 
-%h2 Registered Participants
+%h3 Registered Participants
 %table.table.table-bordered.table-striped.table-hover
     %tr
         %th User
@@ -29,10 +29,10 @@
         %th Paid?
         %th Feedback Form Completed?
         %th Delete Registration
-       
+
     -@course.registrations.each do |registration|
         %tr
-            %td= registration.user.name + " "+ registration.user.last_name 
+            %td= registration.user.name + " "+ registration.user.last_name
             %td= registration.waiting_list ? "Waiting List" : "Registered"
             %td
                 = registration.paid?? "Yes" : "No"
@@ -40,17 +40,19 @@
                     =link_to "Toggle", toggle_paid_admin_registration_path(registration), method: :put
             %td=registration.feedback_form ? "Yes" : "No"
             %td= link_to 'Delete', admin_registration_path(registration), :method => :delete, :data => { :confirm => 'Are you sure?' } , :class => 'btn btn-mini btn-danger'
+    -if @course.registrations.empty?
+        %tr
+            %td{colspan: @course.feedback_questions.size + 1, style: "text-align:center;padding:20px"}
+                No-one has registered on this course yet.
 
-%h2 Feedback Responses
-
-%p= link_to "Edit Questions", admin_course_feedback_questions_path(@course)
-
+%h3 Feedback Responses
 -num_questions = @course.feedback_questions.length
 %table.table.table-bordered.table-striped.table-hover
     %tr
         %th Name
         -@course.feedback_questions.each do |question|
             %th= question.content
+
     -@course.registrations.each do |registration|
         %tr
             %td= registration.user.name
@@ -59,6 +61,11 @@
                     %td= answer.answer
             -else
                 %td.not_completed{colspan: num_questions, style: "text-align:center"} Has not completed form.
+    -if @course.registrations.empty?
+        %tr
+            %td{colspan: @course.feedback_questions.size + 1, style: "text-align:center;padding:20px"}
+                No-one has registered on this course yet.
 
+%p= link_to "Edit Questions", admin_course_type_feedback_questions_path(@course), class: "btn"
 
 = link_to 'Back', admin_courses_path

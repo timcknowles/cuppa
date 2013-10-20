@@ -1,6 +1,8 @@
+%h1 Welcome To Cuppa
+%p To use Cuppa you need an account. If you've already signed up, please login here.
+%p Alternatively you can #{link_to "sign up here", signup_path}.
 
-
-%h1 Log in
+%h2 Login
 = form_tag sessions_path do
   .field
     = label_tag :email
@@ -8,5 +10,5 @@
   .field
     = label_tag :password
     = password_field_tag :password
-    
+
   .actions= submit_tag "Log in", :class => 'btn btn-primary'

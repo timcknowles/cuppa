@@ -1,31 +1,38 @@
-%h1 Listing courses
+-if flash[:internal] == :signup
+    .alert.alert-success
+        %h2 Thanks #{current_user.name}, you have successfully registered: 
+        %p You can log in to this site to view your registration. Your courses will be available in the #{link_to "My Courses",registrations_path} section of the website. After a course you will be invited to complete a feedback form found in this area. On completion of the feedbacl form your certificate will become available. 
+
+%h2 Upcoming Courses
 
 %table.table.table-bordered.table-striped.table-hover
-  %tr
-    %th Title
-    %th Start time
-    %th End time
-    %th Venue
-    %th Description
-    %th Price
-    %th Places available
-    %th Number Registered
-    %th Places Left
-    %th Course Details
-    %th Click to register
-      
-
-  - @courses.each do |course|
     %tr
-      %td= course.title
-      %td= course.start_time.to_s(:long)
-      %td= course.end_time.to_s(:long)
-      %td= course.venue
-      %td= course.description
-      %td= number_to_currency(course.price, :unit => "&pound;", :separator => ",", :delimiter => "")
-      %td= course.places_available
-      %td= pluralize course.users.size, 'place'
-      %td= course_places_remaining(course)
-      %td= link_to 'Show', course, :class => 'btn btn-mini btn-primary'
-      /-if already_registered?
-      %td= link_to register_btn_text(course), registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'
+        %th Title
+        %th Start time
+        %th End time
+        %th Venue
+        %th Description
+        %th Price
+        %th Places available
+        %th Number Registered
+        %th Places Left
+        %th Course Details
+        %th Click to register
+
+    - @courses.each do |course|
+        %tr
+            %td= course.title
+            %td= course.start_time.to_s(:long)
+            %td= course.end_time.to_s(:long)
+            %td= course.venue
+            %td= course.description
+            %td= number_to_currency(course.price, :unit => "&pound;", :separator => ",", :delimiter => "")
+            %td= course.places_available
+            %td= pluralize course.users.size, 'place'
+            %td= course_places_remaining(course)
+            %td= link_to 'Show', course, :class => 'btn btn-mini btn-primary'
+            %td= link_to register_btn_text(course), registrations_path(course_id: course.id), method: :post, :class => 'btn btn-mini btn-primary'
+
+    -if @courses.empty?
+        %tr
+            %td{colspan: 12, style: "text-align:center;padding:20px"} There are not currently any courses available.

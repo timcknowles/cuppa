@@ -1,24 +1,28 @@
-%h2 My Courses
+%h2 Your Courses
 %table.table.table-bordered.table-striped.table-hover
-  %tr
-    %th Course
-    %th Paid?
-    %th status
-    %th Feedback form
-    %th Certificate PDF
-     
-  -@registrations.each do |registration|
     %tr
-      %td= registration.course.title
-      %td= registration.paid ? "Yes" : "No"
-      %td= registration.waiting_list ? "Waiting List" : "Registered"
-      -if registration.feedback_form
-        %td completed
-      -else
-        %td= link_to "Complete feedback form", new_registration_feedback_form_path(registration)
-      -if registration.feedback_form 
-        %td= link_to "Get certficate", certificate_registration_path(registration, format: :pdf) 
-      -else
-        %td unavailable
+        %th Course
+        %th Paid?
+        %th status
+        %th Feedback form
+        %th Certificate PDF
+ 
+    -@registrations.each do |registration|
+        %tr
+            %td= registration.course.title
+            %td= registration.paid ? "Yes" : "No"
+            %td= registration.waiting_list ? "Waiting List" : "Registered"
+            -if registration.feedback_form
+                %td completed
+            -else
+                %td= link_to "Complete feedback form", new_registration_feedback_form_path(registration)
+            -if registration.feedback_form 
+                %td= link_to "Get certficate", certificate_registration_path(registration, format: :pdf) 
+            -else
+                %td unavailable
 
-  
+    -if @registrations.empty?
+        %tr
+            %td{colspan: 12, style: "text-align:center;padding:15px"} 
+                %p You have not signed up to any courses yet. 
+                = link_to "Select a course", courses_path, class: "btn btn-primary"

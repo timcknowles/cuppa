@@ -1,11 +1,12 @@
-%h1 New user
+%h1 Welcome To Cuppa
+%p To use Cuppa you need an account. If you've already signed up, #{link_to "login here", login_path}.
 
-= form_for @user do |f|
-
+= simple_form_for @user, { :class => 'form-horizontal'} do |f|
     -if @course
         %h2 You are registering on #{@course.title}
         =hidden_field_tag :course_id, @course.id
 
     = render 'form', f: f
+    %p= f.submit 'Register', :class => 'btn btn-primary'
 
 = link_to 'Back', users_path

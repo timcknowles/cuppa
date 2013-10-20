@@ -17,4 +17,8 @@ module ApplicationHelper
     end
     @already_registered
   end
+
+  def course_types
+    CourseType.order("title desc").map {|ct|[ct.title, ct.id]}
+  end
 end
