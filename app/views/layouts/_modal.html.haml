@@ -1,14 +1,34 @@
 #example.modal.hide.fade.in{:style => "display: none; "}
-  .modal-header
-    %a.close{"data-dismiss" => "modal"} ×
-    %h3 This is a Modal Heading
-  .modal-body
-    %h4 Text in a modal
-    %p You can add some text here.
-  .modal-footer
+  = simple_form_for ([:admin, @course]), {:html => {:multipart => true}, :class => 'form-horizontal'} do |f|
+    .modal-header
+      %a.close{"data-dismiss" => "modal"} ×
+      %h3 Certificate Preview
+    .modal-body
+      =image_tag "certificatepreview.png"
+      
+
+      =f.input :certificate, as: :file, label: 'Background Image'
+      -if @course.certificate?
+        =File.basename(@course.certificate.path) 
+      -else
+        current default image is star centre background
+      =f.input :logo, as: :file
+      -if @course.logo?
+        =File.basename(@course.logo.path) 
+      -else
+        current default Logo is RBHT
+      =f.input :signature, as: :file
+      -if @course.signature?
+        =File.basename(@course.signature.path) 
+      -else
+        current default signature: Dr Martin Carby
+      
+
+    .modal-footer
+
+      =f.submit "Update Certificate", :class => 'btn btn-primary'
+      %a.btn{"data-dismiss" => "modal", :href => "#"} Close
     
-    %a.btn{"data-dismiss" => "modal", :href => "#"} Close
- 
 %p
   %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#example"} 
-    Show modal
+    Customise Certificate

@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
 
-  attr_accessible :course_type_id, :course_type_attributes, :start_time, :end_time, :venue, :price, :places_available, :course_id, :registrations_attributes, :certificate
+  attr_accessible :course_type_id, :course_type_attributes, :start_time, :end_time, :venue, :price, :places_available, :course_id, :registrations_attributes, :certificate, :logo, :signature
 
   belongs_to :course_type
   has_many :feedback_questions, through: :course_type
@@ -19,6 +19,8 @@ class Course < ActiveRecord::Base
   validates :places_available, presence: true, numericality: { only_integer: true }
 
   mount_uploader :certificate, CertificateUploader
+  mount_uploader :logo, LogoUploader
+  mount_uploader :signature, SignatureUploader
 
   def places_remaining
     places_available - registrations.size

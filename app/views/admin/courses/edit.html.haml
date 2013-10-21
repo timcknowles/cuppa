@@ -1,9 +1,21 @@
 %h1 Editing course
 
-= simple_form_for ([:admin, @course]), { :class => 'form-horizontal'} do |f|
+
+= simple_form_for ([:admin, @course]), {:html => {:multipart => true}, :class => 'form-horizontal'} do |f|
     = render 'form', f: f
+    -if @course.certificate?
+        =File.basename(@course.certificate.path) 
+    -else
+        current default image is star centre background
+
     = f.submit "Update Course", :class => 'btn btn-primary'
+
+
+=render "layouts/modal"
 
 = link_to 'Show', admin_course_path(@course)
 \|
 = link_to 'Back', admin_courses_path
+
+
+
