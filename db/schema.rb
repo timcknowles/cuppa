@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131020153418) do
+ActiveRecord::Schema.define(:version => 20131021005011) do
 
   create_table "course_types", :force => true do |t|
     t.string "title"
@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20131020153418) do
     t.boolean  "feedback_form_completed", :default => false
     t.boolean  "certificate_sent",        :default => false
     t.boolean  "paid",                    :default => false
-    t.boolean  "waiting_list",            :default => false
   end
 
   add_index "registrations", ["course_id"], :name => "index_registrations_on_course_id"

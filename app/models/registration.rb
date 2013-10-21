@@ -12,11 +12,6 @@ class Registration < ActiveRecord::Base
 
   validates :user_id, uniqueness: {scope: :course_id}
 
-  before_create do
-    self.waiting_list = course.full?
-    true
-  end
-
   after_create do
     UserMailer.delay.registration_confirmation(user)
     UserMailer.delay(run_at: course.start_time.getutc.in_time_zone("London") - 1.week).reminder(user)
@@ -27,5 +22,13 @@ class Registration < ActiveRecord::Base
   def toggle_paid!
     self.paid = !self.paid
     save!
+  end
+
+  def on_waiting_list?
+    !course.registrations.
+      limit(course.places_available).
+      order('registrations.created_at ASC').
+      pluck('registrations.id').
+      include?(id)
   end
 end

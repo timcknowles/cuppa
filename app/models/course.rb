@@ -21,7 +21,7 @@ class Course < ActiveRecord::Base
   mount_uploader :certificate, CertificateUploader
 
   def places_remaining
-    places_available - users.size
+    places_available - registrations.size
   end
 
   def full?
