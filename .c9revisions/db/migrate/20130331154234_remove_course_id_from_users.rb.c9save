@@ -1,2 +1,0 @@
-{"ts":1364744574092,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"class RemoveCourseIdFromUsers < ActiveRecord::Migration\n  def up\n  end\n\n  def down\n  end\nend\n"]],"start1":0,"start2":0,"length1":0,"length2":93}]],"length":93}
-{"contributors":["jez.walker@gmail.com"],"silentsave":false,"ts":1364744588645,"patch":[[{"diffs":[[0,"def "],[-1,"up\n  end\n\n  def down"],[1,"change\n     remove_column :users, :course_id"],[0,"\n  e"]],"start1":58,"start2":58,"length1":28,"length2":52}]],"length":117,"saved":false}
