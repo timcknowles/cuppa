@@ -1,40 +1,57 @@
-%h2 Dashboard
-
-%h3 Filter
-=form_tag admin_dashboard_path, method: :get do
-    %p
-        Courses between
+%div{style: "float:right"}
+    =form_tag admin_dashboard_path, method: :get do
         =select_date(@start_time, only: [:month, :year], order: [:month, :year], prefix: :start_time)
         and
         =select_date(@end_time, only: [:month, :year], order: [:month, :year], prefix: :end_time)
         =submit_tag("Filter", class: 'btn btn-primary')
 
+%h2 Dashboard
+
 %h3 Stats
 
-%p 
-    Total revenue for this period: 
+%p
+    Total revenue for this period:
     =number_to_currency(@total_revenue, unit: "&pound;")
 
-%h3 Courses
-%table.table.table-bordered.table-striped.table-hover
-    %tr
-        %th Course Series
-        %th Status
-        %th Date
-        %th Attendees
-        %th Revenue
-        %th{colspan: 3} Options
-
-    - @courses.each do |course|
+-@grouped_courses.each do |course_type, courses|
+    %h3=course_type.title
+    %p= course_type.description
+    %p Total Revenue: #{number_to_currency(courses.sum{|c|c.registrations.size * c.price}, :unit => "&pound;")}
+    %table.table.table-bordered.table-striped.table-hover
         %tr
-            %td= link_to course.title, admin_course_type_path(course.course_type)
-            %td= course.end_time > DateTime.now ? "Upcoming" : "Completed"
-            %td= course.start_time.to_s(:short)
-            %td= course.users.size
-            %td= number_to_currency(course.users.size * course.price, :unit => "&pound;")
-            %td= link_to 'Show', admin_course_path(course), :class => 'btn btn-mini btn-primary'
-            %td= link_to 'Edit', edit_admin_course_path(course), :class => 'btn btn-mini btn-primary'
-            %td= link_to 'Delete', admin_course_path(course), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+            %th{colspan: 7}
+                %h4 Courses
+        %tr
+            %th Date
+            %th Status
+            %th Attendees
+            %th Revenue
+            %th{colspan: 3} Options
+        - courses.each do |course|
+            %tr
+                %td= course.start_time.to_s(:short)
+                %td= course.end_time > DateTime.now ? "Upcoming" : "Completed"
+                %td= course.registrations.size
+                %td= number_to_currency(course.registrations.size * course.price, :unit => "&pound;")
+                %td= link_to 'Show', admin_course_path(course), :class => 'btn btn-mini btn-primary'
+                %td= link_to 'Edit', edit_admin_course_path(course), :class => 'btn btn-mini btn-primary'
+                %td= link_to 'Delete', admin_course_path(course), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+
+    %table.table.table-bordered.table-striped.table-hover
+        %tr
+            %th{colspan: 7}
+                %h4 Feedback
+        -course_type.feedback_questions.each do |question|
+            %tr
+                %td= question.content
+                %td 
+                    -courses.each do |course|
+                        -course.registrations.each do |registration|
+                            -answer = registration.feedback_answers.select{|a|a.feedback_question_id == question.id}[0]
+                            -if answer
+                                =answer.answer
+                                %br
+
 
 = link_to 'Add a New Course', new_admin_course_path, :class => 'btn btn-small btn-success'
 

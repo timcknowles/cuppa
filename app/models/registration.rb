@@ -5,6 +5,7 @@ class Registration < ActiveRecord::Base
   belongs_to :course
   belongs_to :user
   has_one :feedback_form
+  has_many :feedback_answers, through: :feedback_form, source: :answers
 
   validate :course, presence: true
   validate :user, presence: true

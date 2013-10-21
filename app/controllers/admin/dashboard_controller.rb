@@ -3,7 +3,7 @@ class Admin::DashboardController < AdminController
   before_filter :setup_dates
 
   def index
-    courses
+    @grouped_courses = courses.group_by(&:course_type)
     total_revenue
   end
 
@@ -21,11 +21,19 @@ class Admin::DashboardController < AdminController
   end
 
   def courses
-    @courses ||= Course.where("start_time >= ?", @start_time).
-      where("end_time <= ?", (Date.new(@end_time.year, @end_time.month, 1) + 1.month))
+    @courses ||= begin
+      sql_end_point = Date.new(@end_time.year, @end_time.month, 1) + 1.month
+      Course.where("start_time >= ?", @start_time).
+             where("end_time <= ?", sql_end_point).
+             includes([
+               course_type: [:feedback_questions], 
+               registrations: {
+                 feedback_form: :answers,
+               }])
+    end
   end
 
   def total_revenue
-    @total_revenue ||= courses.sum { |course| course.users.size * course.price }
+    @total_revenue ||= courses.sum { |course| course.registrations.size * course.price }
   end
 end
