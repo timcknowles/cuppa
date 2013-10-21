@@ -11,7 +11,7 @@
         %tr
             %td= registration.course.title
             %td= registration.paid ? "Yes" : "No"
-            %td= registration.waiting_list ? "Waiting List" : "Registered"
+            %td= registration.on_waiting_list? ? "Waiting List" : "Registered"
             -if registration.feedback_form
                 %td completed
             -else
