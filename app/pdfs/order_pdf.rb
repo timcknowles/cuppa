@@ -6,8 +6,9 @@ class OrderPdf < Prawn::Document
     bounding_box([10, 525], :width => size, :height => 525) do
     	move_down 10
         image "#{Rails.root}/app/assets/images/rbht_logo_new.png" , :position => 350
-        move_down 40
+        move_down 20
         image  "#{Rails.root}"+"/public/"+"#{@registration.course.certificate_url.to_s}", :fit => [size, size]
+        
         image "#{Rails.root}/app/assets/images/signature.png",  :position => 325
         stroke_color "012d5a"
         line_width 2
@@ -37,13 +38,10 @@ class OrderPdf < Prawn::Document
 
     float do
             bounding_box([240, 50], :width => 300, :height => 50) do
-            text "Dr Martin Carby", :align => :center, :style => :bold
-            text "Consultant Respiratory and Transplant" , :align => :center
-            text "Physician" , :align => :center
+            text "Dr Martin Carby \n Consultant Respiratory and Transplant Physician", :align => :center 
             end
     end
 
     end
 end
 
-#"#{Rails.root}/app/assets/images/STaR_logo_30%.jpg"
