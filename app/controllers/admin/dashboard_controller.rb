@@ -30,8 +30,8 @@ class Admin::DashboardController < AdminController
                registrations: {
                  feedback_form: :answers,
                }])
+      end
     end
-  end
 
   def total_revenue
     @total_revenue ||= courses.sum { |course| course.registrations.size * course.price }
