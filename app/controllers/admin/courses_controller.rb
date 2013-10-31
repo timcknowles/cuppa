@@ -19,6 +19,7 @@ class Admin::CoursesController < AdminController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
+      format.csv {render text: @course.to_csv}
     end
   end
 
