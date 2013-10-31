@@ -38,20 +38,22 @@ class Course < ActiveRecord::Base
     course_type.description
   end
 
-def self.to_csv(options ={})
-  CSV.generate(options) do |csv|
-    csv << column_names
-    all.each do |course|
-      course.registrations each do |registration|
-      csv << [registration.user.name]
+  def self.group_to_csv(courses)
+    CSV.generate do |csv|
+      csv << [:id, :course_type, :start_time, :end_time]
+      courses.each do |course|
+        # course.registrations each do |registration|
+        csv << [course.id, course.course_type.title, course.start_time, course.end_time]
+      end
+    end
+  end
+
+  def self.single_to_csv(course)
+    CSV.generate do |csv|
+      csv << [:name, :feedback_form_completed]
+      course.registrations.each do |registration|
+        csv << [registration.user.name, registration.feedback_form_completed]
+      end
     end
   end
 end
-end
-  
-
-  
-
-end
-
-

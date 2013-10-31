@@ -7,7 +7,7 @@ class Admin::CoursesController < AdminController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
-      format.csv {render text: @courses.to_csv}
+      format.csv {render text: Course.group_to_csv(@courses)}
     end
   end
 
@@ -19,7 +19,7 @@ class Admin::CoursesController < AdminController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
-      format.csv {render text: @course.to_csv}
+      format.csv {render text: Course.single_to_csv(@course)}
     end
   end
 
