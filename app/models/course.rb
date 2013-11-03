@@ -50,9 +50,9 @@ class Course < ActiveRecord::Base
 
   def self.single_to_csv(course)
     CSV.generate do |csv|
-      csv << [:name, :feedback_form_completed]
+      csv << [:name, :last_name]
       course.registrations.each do |registration|
-        csv << [registration.user.name, registration.feedback_form_completed]
+        csv << [registration.user.name, registration.user.last_name]
       end
     end
   end

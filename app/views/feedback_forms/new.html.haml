@@ -1,13 +1,17 @@
-%h2 Feedback form: 
+.well.well-lg
 
-=form_tag registration_feedback_form_path, :class => "feedback_form", method: :post do
-    
-    
+    %h2 Feedback form: 
 
-    -@registration.course.feedback_questions.each do |question|
-        =label_tag :answer, question.content, :class => "feedback_questions"
-        =edit_question_field(question) 
+    =form_tag registration_feedback_form_path, method: :post do
         
+        
+       
+        -@registration.course.feedback_questions.each do |question|
+            .well.well-sm
+                .Qu
+                    =label_tag :answer, question.content
+                =edit_question_field(question) 
+            
 
 
     
