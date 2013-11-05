@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: 018c0b924824b9f5e33a4e3b6978235576b8647b
+  specs:
+    bootstrap-sass (3.0.1.0.rc)
+      sass (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,7 +41,6 @@ GEM
     bcrypt-ruby (3.0.1)
     belongs_to_enum (0.3.1)
       rails
-    bootstrap-sass (2.1.0.0)
     builder (3.0.4)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
@@ -150,7 +156,7 @@ GEM
       json (~> 1.4)
     rmagick (2.13.2)
     ruby-rc4 (0.1.5)
-    sass (3.2.7)
+    sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -189,7 +195,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   belongs_to_enum
-  bootstrap-sass
+  bootstrap-sass!
   carrierwave
   coffee-rails (~> 3.2.1)
   delayed_job_active_record

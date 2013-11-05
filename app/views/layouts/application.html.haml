@@ -12,22 +12,30 @@
     = yield(:head)
     %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/cupertino/jquery-ui.min.css", :rel => "stylesheet", :type => "text/css"}
 
-  %body.body
-    .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
-          .button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
-            .icon-bar
-            .icon-bar
-            .icon-bar
-          = link_to "Cuppa", root_path, :class => 'brand'
-          .nav-collapse.collapse
-            -if user_logged_in? && current_user.admin?
-              = render 'layouts/admin_navigation'
-            -else
-              = render 'layouts/navigation'
-    .container
-      = render 'layouts/messages'
-      = yield
+%body
+  %nav.navbar-inverse.navbar-default{role: "navigation"}
 
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "/"} medicalcoursehub.co.uk
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          -if user_logged_in? && current_user.admin?
+            = render 'layouts/admin_navigation'
+          -else
+
+            = render 'layouts/navigation'
+        
+  .container
+    = render 'layouts/messages'
+    = yield
+
+  
+   
     %footer

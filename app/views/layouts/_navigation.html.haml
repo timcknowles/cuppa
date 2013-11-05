@@ -1,34 +1,41 @@
 
-%ul.nav
 
-  -if user_logged_in?
-    %li.home-page-menu-item 
-      = link_to 'Logout',logout_path(@session)
-    
-    %li.home-page-menu-item 
-      = link_to courses_path do
-        .icon-user.icon-white
-        Available Courses
 
-    %li.home-page-menu-item 
-      = link_to registrations_path do
-        .icon-user.icon-white
-        My Courses
-            
-    %li.home-page-menu-item 
-      = link_to edit_user_path(current_user) do
-        .icon-wrench.icon-white
-        Edit Details
+-if user_logged_in?
+  %li.home-page-menu-item 
+    = link_to logout_path(@session) do
+      .glyphicon.glyphicon-lock
+      Logout
+  
+  %li.home-page-menu-item 
+    = link_to courses_path do
+      .glyphicon.glyphicon-th-list
+      Available Courses
+
+  %li.home-page-menu-item 
+    = link_to registrations_path do
+      .glyphicon.glyphicon-bookmark
+      My Courses
+          
+  %li.home-page-menu-item 
+    = link_to edit_user_path(current_user) do
+      .glyphicon.glyphicon-wrench
+      Edit Details
+
+
   
 
+- else
+  %li.home-page-menu-item
+    = link_to login_path(@session) do 
+      .glyphicon.glyphicon-lock
+      Login
+        
+  %li.home-page-menu-item
+    = link_to signup_path(@user) do
+      .glyphicon.glyphicon-pencil
+      Sign Up
     
-
-  - else
-    %li.home-page-menu-item
-      = link_to 'Login', login_path(@session)   
-    %li.home-page-menu-item
-      = link_to'Sign up', signup_path(@user)
-      
 
 
   

@@ -1,20 +1,28 @@
-.well.well-lg
+=form_tag registration_feedback_form_path, method: :post do
 
-    %h2 Feedback form: 
+    .panel.panel-primary
+        .panel-heading
+            .panel-title
+                Feedback form
 
-    =form_tag registration_feedback_form_path, method: :post do
+        .panel-body
+
+             
+
         
-        
-       
-        -@registration.course.feedback_questions.each do |question|
-            .well.well-sm
-                .Qu
-                    =label_tag :answer, question.content
-                =edit_question_field(question) 
-            
-
+                
+            .panel.panel-default        
+               
+                -@registration.course.feedback_questions.each do |question|
+                    
+                    .panel-heading
+                        =label_tag :answer, question.content
+                    .panel-body
+                        =edit_question_field(question) 
+                
+    =submit_tag "Complete Feedback Form" , :class => 'btn btn-lg btn-primary btn-block'
 
     
-    
+  
 
-    =submit_tag "Complete Feedback Form" , :class => 'btn btn-primary'
+    

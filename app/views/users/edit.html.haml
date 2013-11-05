@@ -1,5 +1,5 @@
 %h2 Editing Your Details
 
-= simple_form_for @user, { :class => 'form-horizontal'} do |f|
+= simple_form_for @user, do |f|
     = render 'form', f: f
     %p= f.submit 'Update Details', :class => 'btn btn-primary'

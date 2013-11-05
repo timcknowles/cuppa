@@ -9,7 +9,7 @@ gem 'belongs_to_enum'
 
 
 gem 'haml-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'figaro'
 gem 'pdfkit'
