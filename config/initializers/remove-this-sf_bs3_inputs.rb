@@ -1,6 +1,5 @@
  inputs = %w[
    CollectionSelectInput
-   DateTimeInput
    FileInput
    GroupedCollectionSelectInput
    NumericInput
@@ -21,3 +20,5 @@ inputs.each do |input_type|
 
   Object.const_set(input_type, new_class)
 end
+
+#DateTimeInput

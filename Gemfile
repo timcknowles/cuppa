@@ -21,6 +21,7 @@ gem 'delayed_job_active_record'
 gem 'prawn'
 gem 'carrierwave'
 gem "rmagick"
+gem 'bootstrap-datepicker-rails'
 
 
 

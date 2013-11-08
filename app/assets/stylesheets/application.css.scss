@@ -1,5 +1,10 @@
 @import "bootstrap";
 
+/*
+*= require_tree .
+*= require bootstrap-datepicker
+*/
+
 .container {
   padding-top: 100px;
   padding-right: 30px;
@@ -89,5 +94,7 @@ input[type="radio"] {
     min-height: 20px;
     padding: 19px;
 }
+
+
 
 

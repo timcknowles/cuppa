@@ -13,9 +13,15 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap
+//= require bootstrap-datepicker
+//= require_tree .
 
+ $(document).on "focus", "[data-behaviour~='datepicker']", (e) ->
+ - $(this).datepicker
+ - format: "dd-mm-yyyy"
+ - weekStart: 1
+ - autoclose: true
 
 $(document).ready(function(){       
 $('#modal-from-dom').modal('hide')
