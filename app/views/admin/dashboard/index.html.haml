@@ -16,7 +16,7 @@
 -@grouped_courses.each do |course_type, courses|
     %h3=course_type.title
     %p= course_type.description
-    %p Total Revenue: #{number_to_currency(courses.sum{|c|c.registrations.size * c.price}, :unit => "&pound;")}
+    %p Total Revenue: #{number_to_currency(courses.sum(&:total_revenue), :unit => "&pound;")}
     %table.table.table-bordered.table-striped.table-hover
         %tr
             %th{colspan: 7}
@@ -32,7 +32,7 @@
                 %td= course.start_time.to_s(:short)
                 %td= course.end_time > DateTime.now ? "Upcoming" : "Completed"
                 %td= course.registrations.size
-                %td= number_to_currency(course.registrations.size * course.price, :unit => "&pound;")
+                %td= number_to_currency(course.total_revenue, :unit => "&pound;")
                 %td= link_to 'Show', admin_course_path(course), :class => 'btn btn-mini btn-primary'
                 %td= link_to 'Edit', edit_admin_course_path(course), :class => 'btn btn-mini btn-primary'
                 %td= link_to 'Delete', admin_course_path(course), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
@@ -44,16 +44,12 @@
         -course_type.feedback_questions.each do |question|
             %tr
                 %td= question.content
-                %td 
+                %td
                     -courses.each do |course|
                         -course.registrations.each do |registration|
                             -answer = registration.feedback_answers.select{|a|a.feedback_question_id == question.id}[0]
                             -if answer
                                 =answer.answer
                                 %br
- 
-
-   
 
 = link_to 'Add a New Course', new_admin_course_path, :class => 'btn btn-small btn-success'
-

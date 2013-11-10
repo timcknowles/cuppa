@@ -20,6 +20,7 @@
     %td= number_to_currency(@course.price, :unit => "&pound;")
 
 = link_to 'Edit', edit_admin_course_path(@course), class: "btn"
+= link_to 'Download as CSV', admin_course_path(@course, :csv), class: "btn"
 
 %h3 Registered Participants
 %table.table.table-bordered.table-striped.table-hover

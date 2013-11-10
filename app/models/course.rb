@@ -38,22 +38,59 @@ class Course < ActiveRecord::Base
     course_type.description
   end
 
-  def self.group_to_csv(courses)
+  def total_revenue
+    registrations.size * price
+  end
+
+
+  # course_type
+  # course_date
+  # number_of_participants
+  # total_revenue	
+  # feedback_question (agreement)	Number who answered: strongly disagree	Number who answered: disagree	Number who answered: Neutral	Number who answered: agree	Number who answered: strongly agree	Number who answered: N/A	Mode	mean	concatenated free text answers	sum of radio button qu  option 1	sum of radio button qu option 2 etc	sum of dropdown qu  option 1	sum of dropdown qu  option 2 etc
+
+  def to_csv
     CSV.generate do |csv|
-      csv << [:id, :course_type, :start_time, :end_time]
-      courses.each do |course|
-        # course.registrations each do |registration|
-        csv << [course.id, course.course_type.title, course.start_time, course.end_time]
-      end
+      csv << course_type.csv_titles
+      csv << csv_data
     end
   end
 
-  def self.single_to_csv(course)
-    CSV.generate do |csv|
-      csv << [:name, :last_name]
-      course.registrations.each do |registration|
-        csv << [registration.user.name, registration.user.last_name]
-      end
+  def csv_data
+    data = [
+      id,
+      course_type.title,
+      start_time,
+      end_time,
+      registrations.count,
+      total_revenue,
+    ]
+    feedback_questions.each do |question|
+      answer_finder = Proc.new { |registration|
+        answer = registration.feedback_answers.select{|a|a.feedback_question_id == question.id}[0]
+        answer ? answer.answer : nil
+      }
+      data << case question.question_type_id
+        when FeedbackQuestion::QuestionType.free_text
+          registrations.map { |registration|
+            answer_finder.call(registration)
+          }.join("\n")
+        when FeedbackQuestion::QuestionType.agreement_level
+          registrations.average { |registration|
+            answer_finder.call(registration)
+          }
+        when FeedbackQuestion::QuestionType.drop_down
+          registrations.map { |registration|
+            answer_finder.call(registration)
+          }.join("\n")
+        when FeedbackQuestion::QuestionType.radio_buttons
+          registrations.map { |registration|
+            answer_finder.call(registration)
+          }.join("\n")
+        end
     end
+    data
   end
 end
+
+

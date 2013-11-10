@@ -8,6 +8,7 @@
     = @course_type.description
 
 = link_to 'Edit', edit_admin_course_type_path(@course_type), class: "btn"
+= link_to 'Download as CSV', admin_course_type_path(@course_type, :csv), class: "btn"
 
 %h3 Courses
 
