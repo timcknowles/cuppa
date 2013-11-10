@@ -2,7 +2,12 @@
 
 = simple_form_for ([:admin, @course]), { :class => 'form-horizontal'} do |f|
 
-    =f.select(:course_type_id, course_types.unshift(["New Course Type", 0]))
+    .form-group.string.required.course_course_type_title
+        %label.string.required.col-lg-2.control-label{for:"course_course_type_attributes_title"}
+            %abbr{title:"required", required: true} * 
+            Course Type
+        .col-lg-10
+            =f.select(:course_type_id, course_types.unshift(["New Course Type", 0]))
 
     =f.fields_for :course_type do |fct|
         =fct.hidden_field :id
