@@ -66,6 +66,6 @@
             %td{colspan: @course.feedback_questions.size + 1, style: "text-align:center;padding:20px"}
                 No-one has registered on this course yet.
 
-%p= link_to "Edit Questions", admin_course_type_feedback_questions_path(@course), class: "btn"
+%p= link_to "Edit Questions", admin_course_type_feedback_questions_path(@course.course_type), class: "btn"
 
 = link_to 'Back', admin_courses_path
