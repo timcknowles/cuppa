@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :last_name, :trust, :hospital, :email, :mobile, :mailing_list, :password, :password_confirmation, :admin, :location_id, :location_name
   attr_accessible :admin, :as => :admin
 
-  has_many :registrations
+  has_many :registrations, dependent: :destroy
   has_many :courses, through: :registrations
   belongs_to :location
   has_secure_password
