@@ -1,18 +1,16 @@
-
 =f.input :name, label: "First name"
 =f.input :last_name
 =f.input :email
 =f.input :password
 =f.input :password_confirmation
 =f.input :mobile
+=f.input :mailing_list, :input_html => { :checked => true }, hint: 'If you DO NOT want to receive email updates about future courses please uncheck the box. NB: we will never disclose your email address to third parties'
 
-
-%form.form-horizontal{"accept-charset" => "UTF-8", role: "form"}
-  %fieldset
+.form.form-horizontal{"accept-charset" => "UTF-8", role: "form"}
+  .fieldset
     .form-group
       .label.col-sm-2.control-label Trust
         
       .col-sm-10
         = f.text_field :trust, data: {autocomplete_source: locations_path}, class: "form-control", placeholder: "Start typing to select your NHS trust . . . . "
                                     
-=f.input :mailing_list, :input_html => { :checked => true }, hint: 'If you DO NOT want to receive email updates about future courses please uncheck the box. NB: we will never disclose your email address to third parties'
