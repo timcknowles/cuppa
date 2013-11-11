@@ -19,7 +19,7 @@ class FeedbackFormsController < ApplicationController
       @feedback_form.answers.build(feedback_question_id: question_id, answer: answer)
     end
     @feedback_form.save!
-    redirect_to [@registration, @feedback_form]
+    redirect_to registrations_path
   end
 
   protected
