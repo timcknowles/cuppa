@@ -1,11 +1,22 @@
-=form_for [:admin, @course_type, @question] do |f|
-    =f.label :content, "Question"
-    =f.text_area :content, style: "width:500px;height:100px"
+=simple_form_for [:admin, @course_type, @question] do |f|
+   
 
-    =f.label :question_type_id
-    =f.select :question_type_id, FeedbackQuestion::QuestionType.items_for_select
+    =f.input :content, label: "Question title", as: "string"
+    
+    
 
-    =f.label :possible_answers, "Possible Answers (Seperate on new lines)"
-    =f.text_area :possible_answers, style: "width:500px;height:300px"
+    =f.input :question_type_id, collection: FeedbackQuestion::QuestionType.items_for_select, prompt: "select question type"
 
-    %p= f.submit "Save Question"
+    =f.input :possible_answers, hint: "separate answers on new lines - leave blank for agreement level and free text"
+   
+
+
+
+
+
+
+
+
+
+    =f.submit "Save Question", :class => 'btn btn-primary'
+
