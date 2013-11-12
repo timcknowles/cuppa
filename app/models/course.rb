@@ -49,8 +49,8 @@ class Course < ActiveRecord::Base
   # total_revenue	
   # feedback_question (agreement)	Number who answered: strongly disagree	Number who answered: disagree	Number who answered: Neutral	Number who answered: agree	Number who answered: strongly agree	Number who answered: N/A	Mode	mean	concatenated free text answers	sum of radio button qu  option 1	sum of radio button qu option 2 etc	sum of dropdown qu  option 1	sum of dropdown qu  option 2 etc
 
-  def to_csv
-    CSV.generate do |csv|
+  def to_csv(options ={})
+    CSV.generate(options) do |csv|
       csv << course_type.csv_titles
       csv << csv_data
     end

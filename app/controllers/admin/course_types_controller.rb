@@ -19,6 +19,7 @@ class Admin::CourseTypesController < AdminController
       format.html # show.html.erb
       format.json { render json: @course_type }
       format.csv {render text: @course_type.to_csv}
+      format.xls {render text: @course_type.to_csv(col_sep: "\t")}
     end
   end
 

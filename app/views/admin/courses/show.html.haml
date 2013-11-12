@@ -5,10 +5,10 @@
     = @course.title
 %p
     %b Start time:
-    = @course.start_time
+    = @course.start_time.to_s(:long)
 %p
     %b End time:
-    = @course.end_time
+    = @course.end_time.to_s(:long)
 %p
     %b Venue:
     = @course.venue
@@ -20,6 +20,7 @@
     %td= number_to_currency(@course.price, :unit => "&pound;")
 
 = link_to 'Edit', edit_admin_course_path(@course), class: "btn"
+= link_to 'Download as XLS', admin_course_path(@course, :xls), class: "btn"
 = link_to 'Download as CSV', admin_course_path(@course, :csv), class: "btn"
 
 %h3 Registered Participants

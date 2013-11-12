@@ -8,6 +8,7 @@ class Admin::CoursesController < AdminController
       format.html # index.html.erb
       format.json { render json: @courses }
       format.csv {render text: Course.batch_to_csv(@courses)}
+      format.xls {render text: Course.batch.to_csv(@courses, col_sep: "\t")}
     end
   end
 
@@ -20,6 +21,7 @@ class Admin::CoursesController < AdminController
       format.html # show.html.erb
       format.json { render json: @course }
       format.csv {render text: @course.to_csv}
+      format.xls {render text: @course.to_csv(col_sep: "\t")}
     end
   end
 

@@ -8,8 +8,8 @@ class CourseType < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
-  def to_csv
-    CSV.generate do |csv|
+  def to_csv(options ={})
+    CSV.generate(options) do |csv|
       csv << csv_titles
       courses.each do |course|
         csv << course.csv_data

@@ -9,7 +9,7 @@
 
 = render 'layouts/modal'
 
-=f.input :certificate, as: :file, hint: "The current image is #{@course.certificate? ? File.basename(@course.certificate.path) : "the default star centre background"}"
+=f.input :certificate, label: 'Background', as: :file, hint: "The current image is #{@course.certificate? ? File.basename(@course.certificate.path) : "the default star centre background"}"
 =f.input :logo, as: :file, hint: "The current image is #{@course.logo? ? File.basename(@course.logo.path) : "the default star centre logo"}"
 =f.input :signature, as: :file, hint: "The current image is #{@course.signature? ? File.basename(@course.signature.path) : "the default signature"}"
 
