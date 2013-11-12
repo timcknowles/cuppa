@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
 
-  attr_accessible :course_type_id, :course_type_attributes, :start_time, :end_time, :venue, :price, :places_available, :course_id, :registrations_attributes, :certificate, :logo, :signature
+  attr_accessible :course_type_id, :course_type_attributes, :start_time, :end_time, :venue, :price, :places_available, :course_id, :registrations_attributes, :certificate, :logo, :signature, :Designation
 
   belongs_to :course_type
   has_many :feedback_questions, through: :course_type

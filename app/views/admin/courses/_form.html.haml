@@ -1,6 +1,6 @@
 =f.input :start_time, label:'Start', :as=> :datetime, :order => [:month, :day, :year], :minute_step => 15
 =f.input :end_time, label:'End', :as=> :datetime, :order => [:month, :day, :year], :minute_step => 15
-=f.input :venue
+=f.input :venue, :collection => ['Harefield STaR Centre'], prompt: "Select your venue"
 =f.input :price
 =f.input :places_available, label: 'Places'
 
@@ -12,6 +12,8 @@
 =f.input :certificate, label: 'Background', as: :file, hint: "The current image is #{@course.certificate? ? File.basename(@course.certificate.path) : "the default star centre background"}"
 =f.input :logo, as: :file, hint: "The current image is #{@course.logo? ? File.basename(@course.logo.path) : "the default star centre logo"}"
 =f.input :signature, as: :file, hint: "The current image is #{@course.signature? ? File.basename(@course.signature.path) : "the default signature"}"
+
+=f.input :Designation, as: :text 
 
 
 

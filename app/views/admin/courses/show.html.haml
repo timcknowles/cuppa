@@ -19,6 +19,8 @@
     %b Price:
     %td= number_to_currency(@course.price, :unit => "&pound;")
 
+    /=simple_format(@course.Designation)
+
 = link_to 'Edit', edit_admin_course_path(@course), class: "btn"
 = link_to 'Download as XLS', admin_course_path(@course, :xls), class: "btn"
 = link_to 'Download as CSV', admin_course_path(@course, :csv), class: "btn"
