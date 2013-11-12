@@ -3,9 +3,15 @@
 =f.input :venue
 =f.input :price
 =f.input :places_available, label: 'Places'
-=f.input :certificate, as: :file
-=f.input :logo, as: :file
-=f.input :signature, as: :file
+
+%h3 Customise Course Certificate 
+.glyphicon.glyphicon-question-sign{"data-target" => "#myModal", "data-toggle" => "modal", :style => "cursor: pointer" }
+
+= render 'layouts/modal'
+
+=f.input :certificate, as: :file, hint: "The current image is #{@course.certificate? ? File.basename(@course.certificate.path) : "the default star centre background"}"
+=f.input :logo, as: :file, hint: "The current image is #{@course.logo? ? File.basename(@course.logo.path) : "the default star centre logo"}"
+=f.input :signature, as: :file, hint: "The current image is #{@course.signature? ? File.basename(@course.signature.path) : "the default signature"}"
 
 
 

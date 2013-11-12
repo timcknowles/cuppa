@@ -5,11 +5,11 @@ class OrderPdf < Prawn::Document
     size = 750
     bounding_box([10, 525], :width => size, :height => 525) do
     	move_down 10
-        image "#{Rails.root}/app/assets/images/rbht_logo_new.png" , :position => 350
+        image "#{Rails.root}"+"/public/"+"#{@registration.course.logo_url.to_s}" , :position => 350
         move_down 20
         image  "#{Rails.root}"+"/public/"+"#{@registration.course.certificate_url.to_s}", :fit => [size, size]
         
-        image "#{Rails.root}/app/assets/images/signature.png",  :position => 325
+        image "#{Rails.root}"+"/public/"+"#{@registration.course.signature_url.to_s}",  :position => 325
         stroke_color "012d5a"
         line_width 2
         stroke_bounds 

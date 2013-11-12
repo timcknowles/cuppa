@@ -26,14 +26,14 @@ class CertificateUploader < CarrierWave::Uploader::Base
 
   #Process files as they are uploaded:
     process :resize_to_fit => [1600, 700]
-    process :transparent
+   # process :transparent
     
-    def transparent
+    #def transparent
 
-      manipulate! do |img|
-        img = img.sepiatone
-        end
-    end
+     # manipulate! do |img|
+      #  img = img.sepiatone
+       # end
+    #end
 
     #convert input.png -channel Alpha -evaluate Divide 2 output.png
   # def scale(width, height)

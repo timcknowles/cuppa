@@ -1,34 +1,13 @@
-#example.modal.hide.fade.in{:style => "display: none; "}
-  = simple_form_for ([:admin, @course]), {:html => {:multipart => true}, :class => 'form-horizontal'} do |f|
-    .modal-header
-      %a.close{"data-dismiss" => "modal"} ×
-      %h3 Certificate Preview
-    .modal-body
-      =image_tag "certificatepreview.png"
-      
 
-      =f.input :certificate, as: :file, label: 'Background Image'
-      -if @course.certificate?
-        =File.basename(@course.certificate.path) 
-      -else
-        current default image is star centre background
-      =f.input :logo, as: :file
-      -if @course.logo?
-        =File.basename(@course.logo.path) 
-      -else
-        current default Logo is RBHT
-      =f.input :signature, as: :file
-      -if @course.signature?
-        =File.basename(@course.signature.path) 
-      -else
-        current default signature: Dr Martin Carby
-      
-
-    .modal-footer
-
-      =f.submit "Update Certificate", :class => 'btn btn-primary'
-      %a.btn{"data-dismiss" => "modal", :href => "#"} Close
-    
-%p
-  %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#example"} 
-    Customise Certificate
+  
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Certificate Layout
+      .modal-body
+        =image_tag('certificatepreview.png', :style => "width: 940px")
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+        /%button.btn.btn-primary{type: "button"} Save changes
