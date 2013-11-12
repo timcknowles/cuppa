@@ -2,10 +2,10 @@
 %h3 Details
 %p
     %b Start time:
-    = @course.start_time
+    = @course.start_time.to_s(:long)
 %p
     %b End time:
-    = @course.end_time
+    = @course.end_time.to_s(:long)
 %p
     %b Venue:
     = @course.venue
