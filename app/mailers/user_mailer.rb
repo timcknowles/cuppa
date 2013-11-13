@@ -3,18 +3,18 @@ class UserMailer < ActionMailer::Base
 
   def registration_confirmation(registration)
     @user = registration.user
-    @registration = registration
-    mail(:to => registration.user.email, :subject => "Harefield STaR Centre: Thanks for registering")
+    #@registration = registration
+    mail(:to => user.email, :subject => "Harefield STaR Centre: Thanks for registering")
     
   end
 
   def reminder(user)
     @user = user
-    mail(:to => registration.user.email, :subject => "Harefield STaR Centre: Reminder")
+    mail(:to => user.email, :subject => "Harefield STaR Centre: Reminder")
   end
 
   def feedback(user)
     @user = user
-    mail(:to => registration.user.email, :subject => "Harefield STaR Centre: Please complete feedback")
+    mail(:to => user.email, :subject => "Harefield STaR Centre: Please complete feedback")
   end
 end
