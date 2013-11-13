@@ -1,8 +1,8 @@
 class UserMailer < ActionMailer::Base
   default from: "noreply@harefieldstarcentre.org"
 
-  def registration_confirmation(registration)
-    @user = registration.user
+  def registration_confirmation(user)
+    @user = user
     #@registration = registration
     mail(:to => user.email, :subject => "Harefield STaR Centre: Thanks for registering")
     
