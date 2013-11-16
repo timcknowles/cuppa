@@ -13,9 +13,9 @@ class Registration < ActiveRecord::Base
   validates :user_id, uniqueness: {scope: :course_id}
 
   after_create do
-    UserMailer.delay.registration_confirmation(user)
-    UserMailer.delay(run_at: course.start_time.getutc.in_time_zone("London") - 1.week).reminder(user)
-    UserMailer.delay(run_at: course.end_time.getutc.in_time_zone("London")).feedback(user)
+    UserMailer.delay.registration_confirmation(self)
+    UserMailer.delay(run_at: course.start_time.getutc.in_time_zone("London") - 1.week).reminder(self)
+    UserMailer.delay(run_at: course.end_time.getutc.in_time_zone("London")).feedback(self)
     true
   end
 
