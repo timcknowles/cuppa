@@ -76,9 +76,9 @@ class Course < ActiveRecord::Base
             answer_finder.call(registration)
           }.join("\n")
         when FeedbackQuestion::QuestionType.agreement_level
-          registrations.average { |registration|
-            answer_finder.call(registration)
-          }
+          registrations.inject(0.0) { |sum, registration|
+            sum += answer_finder.call(registration).to_f
+          } / registrations.size
         when FeedbackQuestion::QuestionType.drop_down
           registrations.map { |registration|
             answer_finder.call(registration)
