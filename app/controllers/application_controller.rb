@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   before_filter :check_logged_in
-
   private
 
   def current_user
@@ -26,4 +25,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path 
     false
   end
+
+
+  def static_pages
+    help_url
+  end
+
 end

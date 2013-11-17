@@ -2,8 +2,7 @@ Cuppa::Application.routes.draw do
 
   namespace :admin do
     match '/help' => 'pages#help'
-    match '/privacy' => 'pages#privacy'
-    match '/contact' => 'pages#contact'
+    
     get '/dashboard' => "dashboard#index"
     resources :feedback_answers
     resources :feedback_forms
@@ -20,7 +19,9 @@ Cuppa::Application.routes.draw do
   end
   get "/admin" => redirect("/admin/courses")
 
- 
+  get 'terms' => 'pages#terms', :as => 'terms'
+  get'privacy' => 'pages#privacy', :as => 'privacy'
+  get 'contact' => 'pages#contact'
 
   resources :registrations do
     resource :feedback_form
