@@ -62,11 +62,18 @@ select.date, select.time, select.datetime,
 }
 
 .feedback_question_agreement_level {
-
-  text-align: center;
-
+    width:100%;
+    
+    th, td {
+      text-align:center;
+    }
 }
- 
+
+.panel-body textarea {
+  width: 100%;
+}
+
+
 input[type="radio"] {
 
   margin-left: 50px;

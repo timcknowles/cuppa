@@ -6,6 +6,7 @@ module FeedbackFormsHelper
     case question.question_type_id
     when FeedbackQuestion::QuestionType.free_text
       text_area_tag(id)
+        
 
     when FeedbackQuestion::QuestionType.drop_down
       select_tag(id, options_for_select(question.possible_answers_array))
